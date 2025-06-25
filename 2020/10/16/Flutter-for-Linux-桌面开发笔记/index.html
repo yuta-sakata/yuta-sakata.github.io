@@ -10,22 +10,28 @@
     <meta name="copyright" content="大西冰城">
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     <meta name="description" content="">
-    <meta name="description" content="新装了一台Ubuntu 24.04 LTS的服务器，nmtui似乎已经被移除，现在的Ubuntu版本需要使用netplan来配置无线网络,本文记录了配置过程。 查看无线网卡使用ip addr命令查看无线网卡的名称。   12345678910111213jr@dataserver:~$ ip addr1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdi">
+    <meta name="description" content="Flutter是一当前谷歌大力推行的夸平台App开发框架,现已支持Linux! 开启Linux的支持根据我排雷的经验，开发Flutter最好还是在ubuntu 18.4这些新版本里安装，作者16.04，好多软件包太老，需要拖源代码编译新的，老烦了打开终端,运行(这里已经装好了Flutter，不会装看这里)flutter config --enable-linux-desktop这样就开启了Linu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu使用netplan配置无线网络">
-<meta property="og:url" content="http://steven-feng.com/2025/06/19/Ubuntu%E4%BD%BF%E7%94%A8netplan%E9%85%8D%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:title" content="Flutter for Linux 桌面开发笔记">
+<meta property="og:url" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="新装了一台Ubuntu 24.04 LTS的服务器，nmtui似乎已经被移除，现在的Ubuntu版本需要使用netplan来配置无线网络,本文记录了配置过程。 查看无线网卡使用ip addr命令查看无线网卡的名称。   12345678910111213jr@dataserver:~$ ip addr1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdi">
+<meta property="og:description" content="Flutter是一当前谷歌大力推行的夸平台App开发框架,现已支持Linux! 开启Linux的支持根据我排雷的经验，开发Flutter最好还是在ubuntu 18.4这些新版本里安装，作者16.04，好多软件包太老，需要拖源代码编译新的，老烦了打开终端,运行(这里已经装好了Flutter，不会装看这里)flutter config --enable-linux-desktop这样就开启了Linu">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-06-19T09:30:23.000Z">
-<meta property="article:modified_time" content="2025-06-25T09:09:55.916Z">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/termal.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/flutter.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/fonts.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/ttf.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/zh.jpg">
+<meta property="article:published_time" content="2020-10-16T02:39:48.000Z">
+<meta property="article:modified_time" content="2025-06-25T09:39:36.651Z">
 <meta property="article:author" content="大西冰城">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/termal.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/logo.png">
-    <title>Ubuntu使用netplan配置无线网络 · 大西冰城的博客</title>
+    <title>Flutter for Linux 桌面开发笔记 · 大西冰城的博客</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -243,7 +249,7 @@
             <a href="/">大西冰城的博客</a>
         </div>
         <div class="post-title header-element">
-            <a href="#" class="post-name">Ubuntu使用netplan配置无线网络</a>
+            <a href="#" class="post-name">Flutter for Linux 桌面开发笔记</a>
         </div>
     </div>
 </header>
@@ -270,7 +276,7 @@
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-                Ubuntu使用netplan配置无线网络
+                Flutter for Linux 桌面开发笔记
             <!-- 404 -->
         </h1>
         <!-- 副标题 -->
@@ -287,12 +293,12 @@
 
                 <!-- 文章字数统计 -->
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">847</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                        <span>Word count: <span class="post-count word-count">638</span>Reading time: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2025/06/19</span>
+                    <span class="post-intro-time">2020/10/16</span>
                     <!-- busuanzi -->
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                             <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
@@ -444,44 +450,58 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p>新装了一台Ubuntu 24.04 LTS的服务器，nmtui似乎已经被移除，现在的Ubuntu版本需要使用netplan来配置无线网络,本文记录了配置过程。</p>
-<h2 id="查看无线网卡"><a href="#查看无线网卡" class="headerlink" title="查看无线网卡"></a>查看无线网卡</h2><p>使用<code>ip addr</code>命令查看无线网卡的名称。  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">jr@dataserver:~$ ip addr</span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host noprefixroute </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: enp3s0f0: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/ether 98:f2:b3:ef:5b:52 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">3: enp3s0f1: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/ether 98:f2:b3:ef:5b:53 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">4: wls2: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/ether 60:<span class="built_in">dd</span>:8e:d2:a3:25 brd ff:ff:ff:ff:ff:ff</span><br></pre></td></tr></table></figure>
-<p>其中<code>wls2</code>是无线网卡的名称，不同的设备可能名称不同，可能是<code>wlan0</code>、<code>wlp2s0</code>等,我们需要使用这个名称来配置无线网络。</p>
-<h2 id="配置netplan"><a href="#配置netplan" class="headerlink" title="配置netplan"></a>配置netplan</h2><p>netplan的配置文件通常位于<code>/etc/netplan/</code>目录下，文件名通常以<code>.yaml</code>结尾。可以使用以下命令查看该目录下的文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jr@dataserver:~$ <span class="built_in">ls</span> /etc/netplan/</span><br><span class="line">50-cloud-init.yaml</span><br></pre></td></tr></table></figure>
-<p>如果该目录下没有文件，可以创建一个新的配置文件，例如<code>01-netcfg.yaml</code>，这里我们使用<code>50-cloud-init.yaml</code>文件进行配置，注意，yaml文件的缩进非常重要，必须使用空格而不是制表符(tab)，并且缩进必须一致。<br>接下来使用文本编辑器打开该文件，例如使用<code>nano</code>或<code>vim</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/netplan/50-cloud-init.yaml</span><br></pre></td></tr></table></figure>
-<p>按<code>i</code>进入插入模式，文件中添加以下内容，替换<code>wls2</code>为你的无线网卡名称，<code>SSID</code>为你的无线网络名称，<code>password</code>为你的无线网络密码：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">network:</span></span><br><span class="line">  <span class="attr">version:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">wifis:</span></span><br><span class="line">    <span class="attr">wls2:</span></span><br><span class="line">      <span class="attr">access-points:</span></span><br><span class="line">        <span class="attr">&quot;SSID&quot;:</span> <span class="comment"># 替换为你的无线网络名称</span></span><br><span class="line">          <span class="attr">password:</span> <span class="string">&quot;password&quot;</span> <span class="comment"># 替换为你的无线网络密码</span></span><br><span class="line">      <span class="attr">dhcp4:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>按<code>Esc</code>键退出插入模式，然后输入<code>:wq</code>保存并退出编辑器。如果你使用的是<code>nano</code>，可以按<code>Ctrl + O</code>保存，然后按<code>Ctrl + X</code>退出编辑器。</p>
-<h2 id="应用配置"><a href="#应用配置" class="headerlink" title="应用配置"></a>应用配置</h2><p>使用以下命令应用netplan配置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> netplan apply</span><br></pre></td></tr></table></figure>
-<p>如果没有错误，配置将会生效。你可以使用<code>ip addr</code>命令查看无线网卡的状态，确认它已经连接到无线网络。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">jr@dataserver:~$ ip addr</span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host noprefixroute </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: enp3s0f0: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/ether 98:f2:b3:ef:5b:52 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">3: enp3s0f1: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/ether 98:f2:b3:ef:5b:53 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">4: wls2: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/ether 60:<span class="built_in">dd</span>:8e:d2:a3:25 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    altname wlp2s0</span><br><span class="line">    inet 192.168.5.36/24 metric 600 brd 192.168.5.255 scope global dynamic wls2</span><br><span class="line">       valid_lft 84619sec preferred_lft 84619sec</span><br><span class="line">    inet6 240e:3b3:ee2:7490:62dd:8eff:fed2:a325/64 scope global dynamic mngtmpaddr noprefixroute </span><br><span class="line">       valid_lft 7145sec preferred_lft 3545sec</span><br><span class="line">    inet6 fe80::62dd:8eff:fed2:a325/64 scope <span class="built_in">link</span> </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
-<p>我们可以看到无线网卡<code>wls2</code>已经连接到无线网络，并且获取了IP地址。</p>
+        <p><a target="_blank" rel="noopener" href="https://flutterchina.club/">Flutter</a>是一当前谷歌大力推行的夸平台App开发框架,现已支持Linux!</p>
+<h2 id="开启Linux的支持"><a href="#开启Linux的支持" class="headerlink" title="开启Linux的支持"></a>开启Linux的支持</h2><p>根据我排雷的经验，开发Flutter最好还是在ubuntu 18.4这些新版本里安装，作者16.04，好多软件包太老，需要拖源代码编译新的，老烦了<br>打开终端,运行(这里已经装好了Flutter，<a target="_blank" rel="noopener" href="https://flutterchina.club/setup-linux/">不会装看这里</a>)<br><code>flutter config --enable-linux-desktop</code><br>这样就开启了Linux的支持，最好再运行一下<br><code>flutter doctor</code></p>
+<blockquote>
+<p>linux还要安装以下几个包：</p>
+</blockquote>
+<ul>
+<li>cmake （3.10+）</li>
+<li>libblkid-dev</li>
+<li>ninja-build</li>
+<li>libgtk-3-dev</li>
+</ul>
+<h2 id="创建flutter项目"><a href="#创建flutter项目" class="headerlink" title="创建flutter项目"></a>创建flutter项目</h2><p>打开你要创建的项目路径,运行(<code>myapp</code>是项目名，自己定)<br><code>flutter create myapp</code></p>
+<p>命令行显示如下，一个Demo就创建好了<br><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/termal.png"></p>
+<p>根据提示<code>cd myapp</code>然后<code>flutter run</code>运行这个Demo</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/flutter.png"></p>
+<p>到这一步，Flutter for Linux桌面开发的一个Demo就完成了</p>
+<h2 id="中文字体缺失问题"><a href="#中文字体缺失问题" class="headerlink" title="中文字体缺失问题"></a>中文字体缺失问题</h2><ul>
+<li>可能已经有老铁注意到了，在开发的过程中，如果用中文，在flutter那会乱码，<a target="_blank" rel="noopener" href="https://github.com/google/flutter-desktop-embedding/issues/730">Issus</a>也被问爆了，得到的回答却是:  <blockquote>
+<p>Please read the Feedback section of the README. This issue is not related to the code in this repository.</p>
+</blockquote>
+</li>
+</ul>
+<p>呵呵，好一个甩锅，然后我以为是编译脚本问题，在脚本那改半天，最后发现，只是缺失中文字体库缺失问题，还真不是官方问题啊……..</p>
+<p>所以，我们只需要在项目跟目录创建一个fonts文件夹<br><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/fonts.png"><br>然后，找一些你喜欢的中文字体，复制到fonts文件夹里(.TTC或者.ttf格式)作者这里从windows下复制了微软雅黑，字体，仅仅演示哈，注意版权问题<br><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/ttf.png"><br>复制好后，打开flutter的配置文件<code>pubspec.yaml</code>,里面有几行被注释的代码</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># example:</span></span><br><span class="line">  <span class="comment"># fonts:</span></span><br><span class="line">  <span class="comment">#   - family: Schyler</span></span><br><span class="line">  <span class="comment">#     fonts:</span></span><br><span class="line">  <span class="comment">#       - asset: fonts/Schyler-Regular.ttf</span></span><br><span class="line">  <span class="comment">#       - asset: fonts/Schyler-Italic.ttf</span></span><br><span class="line">  <span class="comment">#         style: italic</span></span><br><span class="line">  <span class="comment">#   - family: Trajan Pro</span></span><br><span class="line">  <span class="comment">#     fonts:</span></span><br><span class="line">  <span class="comment">#       - asset: fonts/TrajanPro.ttf</span></span><br><span class="line">  <span class="comment">#       - asset: fonts/TrajanPro_Bold.ttf</span></span><br><span class="line">  <span class="comment">#         weight: 700</span></span><br><span class="line">  <span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p>这里是添加自定字体的配置，然后作者在这里改成了这个样</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">fonts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">family:</span> <span class="string">YaHeiUI</span> <span class="comment">#这里命名自己取，待会用到</span></span><br><span class="line">      <span class="attr">fonts:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">fonts/MSYH.TTC</span> <span class="comment">#一般一个字体都有好几个样式的文件，同一个字体的都这样加上</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">fonts/MSYHBD.TTC</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">fonts/MSYHL.TTC</span></span><br><span class="line">          <span class="attr">weight:</span> <span class="number">700</span></span><br></pre></td></tr></table></figure>
+<p>这样，就添加了自己的字体库了，接着，在代码的 <code>class MyApp extends StatelessWidget</code>加上 &#96;fontFamily: ‘YaHeiUI’使用字体</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApp</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This widget is the root of your application.</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      title: <span class="string">&#x27;Flutter Demo&#x27;</span>,</span><br><span class="line">      theme: ThemeData(</span><br><span class="line">        fontFamily: <span class="string">&#x27;YaHeiUI&#x27;</span>, <span class="comment">//刚刚上面family怎么命名的，这里写什么</span></span><br><span class="line">        .....</span><br></pre></td></tr></table></figure>
+<p>然后，中文就正常啦<br><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/zh.jpg"></p>
 
     </article>
     <!-- license -->
         <div class="license-wrapper">
             <p>Author：<a href="http://steven-feng.com">大西冰城</a>
-            <p>Link：<a href="http://steven-feng.com/2025/06/19/Ubuntu%E4%BD%BF%E7%94%A8netplan%E9%85%8D%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/">http://steven-feng.com/2025/06/19/Ubuntu%E4%BD%BF%E7%94%A8netplan%E9%85%8D%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/</a>
-            <p>Publish date：<a href="http://steven-feng.com/2025/06/19/Ubuntu%E4%BD%BF%E7%94%A8netplan%E9%85%8D%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/">June 19th 2025, 5:30:23 pm</a>
-            <p>Update date：<a href="http://steven-feng.com/2025/06/19/Ubuntu%E4%BD%BF%E7%94%A8netplan%E9%85%8D%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/">June 25th 2025, 5:09:55 pm</a>
+            <p>Link：<a href="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</a>
+            <p>Publish date：<a href="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">October 16th 2020, 10:39:48 am</a>
+            <p>Update date：<a href="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">June 25th 2025, 5:39:36 pm</a>
             <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     <!-- paginator -->
     <ul class="post-paginator">
         <li class="next">
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" title="Ubuntu Server 安装指南">
-                    <div class="nextTitle">Ubuntu Server 安装指南</div>
+                <a href="/2020/10/20/SQLServer-%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="SQLServer 安装教程">
+                    <div class="nextTitle">SQLServer 安装教程</div>
                 </a>
         </li>
         <li class="previous">
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2025/06/16/%E8%87%AA%E5%8A%A8%E5%8C%96-img%E9%95%9C%E5%83%8F%E7%98%A6%E8%BA%AB%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0/" title="自动化.img镜像瘦身脚本实现">
-                    <div class="prevTitle">自动化.img镜像瘦身脚本实现</div>
+                <a href="/2020/10/14/Linux%E8%AE%BE%E7%BD%AENFS%E5%90%91%E5%90%8E%E5%85%BC%E5%AE%B9/" title="Linux设置NFS向后兼容">
+                    <div class="prevTitle">Linux设置NFS向后兼容</div>
                 </a>
         </li>
     </ul>
@@ -533,7 +553,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1"><span class="toc-number">1.</span> <span class="toc-text">查看无线网卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEnetplan"><span class="toc-number">2.</span> <span class="toc-text">配置netplan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">应用配置</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%90%AFLinux%E7%9A%84%E6%94%AF%E6%8C%81"><span class="toc-number">1.</span> <span class="toc-text">开启Linux的支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAflutter%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.</span> <span class="toc-text">创建flutter项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E5%AD%97%E4%BD%93%E7%BC%BA%E5%A4%B1%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">中文字体缺失问题</span></a></li></ol>
             </div>
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">

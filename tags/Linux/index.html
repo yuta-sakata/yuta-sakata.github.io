@@ -474,6 +474,60 @@ ventony:ventony 下载页面 这是一个开源的多启动工具，可以将你
             </div>
         </article>
         <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">
+                <span class="abstract-title-text">Flutter for Linux 桌面开发笔记</span>
+            </a>
+            <div class="abstract-content">
+                Flutter是一当前谷歌大力推行的夸平台App开发框架,现已支持Linux!
+开启Linux的支持根据我排雷的经验，开发Flutter最好还是在ubuntu 18.4这些新版本里安装，作者16.04，好多软件包太老，需要拖源代码编译新的，老烦了打开终端,运行(这里已经装好了Flutter，不会装看这里)flutter config --enable-linux-desktop这样就开启了Linux的支持，最好再运行一下flutter doctor
+
+linux还要安装以下几个包：
+
+
+cmake （3.10+）
+libblkid-dev
+ninja-build
+libgtk-3-dev...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/06/25">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/16</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2020/10/14/Linux%E8%AE%BE%E7%BD%AENFS%E5%90%91%E5%90%8E%E5%85%BC%E5%AE%B9/">
+                <span class="abstract-title-text">Linux设置NFS向后兼容</span>
+            </a>
+            <div class="abstract-content">
+                在移植Linux的过程中,我使用了NFS挂载rootfs，方便驱动开发和调试，在电脑更新系统后发现NFS死活挂载不上，经过多方查找资料，原来是NFS太新，单片机那没法挂载，故需要配置向后兼容,这里记录一下过程  
+修改配置文件用 vim 打开 &#x2F;etc&#x2F;default&#x2F;nfs-kernel-server (记得需要root权限)sudo vim /etc/default/nfs-kernel-server输入 i 在最后一行添加RPCNFSDOPTS=&quot;--nfs-version 2,3,4 --debug --syslog&quot;然后按 es...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2025/06/25">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/10/14</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
     <!-- paginator  -->
 </main>
 
@@ -512,9 +566,14 @@ ventony:ventony 下载页面 这是一个开源的多启动工具，可以将你
         
         
         
+        
+        
+        
+        
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 3
+        Total : 8
         </div>
         <!-- search  -->
     </div>
@@ -533,6 +592,32 @@ ventony:ventony 下载页面 这是一个开源的多启动工具，可以将你
             <span class="archive-post-date">06/16</span>
             <a class="archive-post-title" href="/2025/06/16/%E8%87%AA%E5%8A%A8%E5%8C%96-img%E9%95%9C%E5%83%8F%E7%98%A6%E8%BA%AB%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0/">自动化.img镜像瘦身脚本实现</a>
         </li>
+                </ul>
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/29</span>
+            <a class="archive-post-title" href="/2021/10/29/MyBatis-Plus%E5%A6%82%E4%BD%95%E6%AD%A3%E7%BD%AE%E9%85%8D%E7%BD%AE%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">MyBatis-Plus如何正置配置一对多关系数据的分页查询</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/15</span>
+            <a class="archive-post-title" href="/2021/03/15/%E5%88%A9%E7%94%A8HEXO-Gitee-%E7%A0%81%E4%BA%91-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2/">利用HEXO+Gitee(码云)创建一个属于自己的免费博客</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/20</span>
+            <a class="archive-post-title" href="/2020/10/20/SQLServer-%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">SQLServer 安装教程</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">Flutter for Linux 桌面开发笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/14</span>
+            <a class="archive-post-title" href="/2020/10/14/Linux%E8%AE%BE%E7%BD%AENFS%E5%90%91%E5%90%8E%E5%85%BC%E5%AE%B9/">Linux设置NFS向后兼容</a>
+        </li>
             </ul>
     </div>
 </div>
@@ -547,6 +632,18 @@ ventony:ventony 下载页面 这是一个开源的多启动工具，可以将你
                 <span class="iconfont-archer">&#xe606;</span>
                 嵌入式开发
             </span>
+            <span class="sidebar-tag-name" data-tags="MyBatis-Plus">
+                <span class="iconfont-archer">&#xe606;</span>
+                MyBatis-Plus
+            </span>
+            <span class="sidebar-tag-name" data-tags="SQLServer">
+                <span class="iconfont-archer">&#xe606;</span>
+                SQLServer
+            </span>
+            <span class="sidebar-tag-name" data-tags="Hexo">
+                <span class="iconfont-archer">&#xe606;</span>
+                Hexo
+            </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -557,6 +654,18 @@ ventony:ventony 下载页面 这是一个开源的多启动工具，可以将你
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="Linux运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux运维
+        </span>
+        <span class="sidebar-category-name" data-categories="开发环境摸坑">
+            <span class="iconfont-archer">&#xe60a;</span>
+            开发环境摸坑
+        </span>
+        <span class="sidebar-category-name" data-categories="业余玩法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            业余玩法
+        </span>
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
     <div class="sidebar-categories-list"></div>
