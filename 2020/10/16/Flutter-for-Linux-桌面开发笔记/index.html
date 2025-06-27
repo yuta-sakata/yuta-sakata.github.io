@@ -17,17 +17,17 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Flutter是一当前谷歌大力推行的夸平台App开发框架,现已支持Linux! 开启Linux的支持根据我排雷的经验，开发Flutter最好还是在ubuntu 18.4这些新版本里安装，作者16.04，好多软件包太老，需要拖源代码编译新的，老烦了打开终端,运行(这里已经装好了Flutter，不会装看这里)flutter config --enable-linux-desktop这样就开启了Linu">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/termal.png">
-<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/flutter.png">
-<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/fonts.png">
-<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/ttf.png">
-<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/zh.jpg">
+<meta property="og:image" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/termal.png">
+<meta property="og:image" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/flutter.png">
+<meta property="og:image" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/fonts.png">
+<meta property="og:image" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/ttf.png">
+<meta property="og:image" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/zh.jpg">
 <meta property="article:published_time" content="2020-10-16T02:39:48.000Z">
 <meta property="article:modified_time" content="2025-06-25T09:39:36.651Z">
 <meta property="article:author" content="大西冰城">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/termal.png">
+<meta name="twitter:image" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/termal.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/logo.png">
@@ -462,9 +462,9 @@
 <li>libgtk-3-dev</li>
 </ul>
 <h2 id="创建flutter项目"><a href="#创建flutter项目" class="headerlink" title="创建flutter项目"></a>创建flutter项目</h2><p>打开你要创建的项目路径,运行(<code>myapp</code>是项目名，自己定)<br><code>flutter create myapp</code></p>
-<p>命令行显示如下，一个Demo就创建好了<br><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/termal.png"></p>
+<p>命令行显示如下，一个Demo就创建好了<br><img src="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/termal.png"></p>
 <p>根据提示<code>cd myapp</code>然后<code>flutter run</code>运行这个Demo</p>
-<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/flutter.png"></p>
+<p><img src="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/flutter.png"></p>
 <p>到这一步，Flutter for Linux桌面开发的一个Demo就完成了</p>
 <h2 id="中文字体缺失问题"><a href="#中文字体缺失问题" class="headerlink" title="中文字体缺失问题"></a>中文字体缺失问题</h2><ul>
 <li>可能已经有老铁注意到了，在开发的过程中，如果用中文，在flutter那会乱码，<a target="_blank" rel="noopener" href="https://github.com/google/flutter-desktop-embedding/issues/730">Issus</a>也被问爆了，得到的回答却是:  <blockquote>
@@ -473,13 +473,13 @@
 </li>
 </ul>
 <p>呵呵，好一个甩锅，然后我以为是编译脚本问题，在脚本那改半天，最后发现，只是缺失中文字体库缺失问题，还真不是官方问题啊……..</p>
-<p>所以，我们只需要在项目跟目录创建一个fonts文件夹<br><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/fonts.png"><br>然后，找一些你喜欢的中文字体，复制到fonts文件夹里(.TTC或者.ttf格式)作者这里从windows下复制了微软雅黑，字体，仅仅演示哈，注意版权问题<br><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/ttf.png"><br>复制好后，打开flutter的配置文件<code>pubspec.yaml</code>,里面有几行被注释的代码</p>
+<p>所以，我们只需要在项目跟目录创建一个fonts文件夹<br><img src="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/fonts.png"><br>然后，找一些你喜欢的中文字体，复制到fonts文件夹里(.TTC或者.ttf格式)作者这里从windows下复制了微软雅黑，字体，仅仅演示哈，注意版权问题<br><img src="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/ttf.png"><br>复制好后，打开flutter的配置文件<code>pubspec.yaml</code>,里面有几行被注释的代码</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># example:</span></span><br><span class="line">  <span class="comment"># fonts:</span></span><br><span class="line">  <span class="comment">#   - family: Schyler</span></span><br><span class="line">  <span class="comment">#     fonts:</span></span><br><span class="line">  <span class="comment">#       - asset: fonts/Schyler-Regular.ttf</span></span><br><span class="line">  <span class="comment">#       - asset: fonts/Schyler-Italic.ttf</span></span><br><span class="line">  <span class="comment">#         style: italic</span></span><br><span class="line">  <span class="comment">#   - family: Trajan Pro</span></span><br><span class="line">  <span class="comment">#     fonts:</span></span><br><span class="line">  <span class="comment">#       - asset: fonts/TrajanPro.ttf</span></span><br><span class="line">  <span class="comment">#       - asset: fonts/TrajanPro_Bold.ttf</span></span><br><span class="line">  <span class="comment">#         weight: 700</span></span><br><span class="line">  <span class="comment">#</span></span><br></pre></td></tr></table></figure>
 <p>这里是添加自定字体的配置，然后作者在这里改成了这个样</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">fonts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">family:</span> <span class="string">YaHeiUI</span> <span class="comment">#这里命名自己取，待会用到</span></span><br><span class="line">      <span class="attr">fonts:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">fonts/MSYH.TTC</span> <span class="comment">#一般一个字体都有好几个样式的文件，同一个字体的都这样加上</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">fonts/MSYHBD.TTC</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">fonts/MSYHL.TTC</span></span><br><span class="line">          <span class="attr">weight:</span> <span class="number">700</span></span><br></pre></td></tr></table></figure>
 <p>这样，就添加了自己的字体库了，接着，在代码的 <code>class MyApp extends StatelessWidget</code>加上 &#96;fontFamily: ‘YaHeiUI’使用字体</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApp</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This widget is the root of your application.</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      title: <span class="string">&#x27;Flutter Demo&#x27;</span>,</span><br><span class="line">      theme: ThemeData(</span><br><span class="line">        fontFamily: <span class="string">&#x27;YaHeiUI&#x27;</span>, <span class="comment">//刚刚上面family怎么命名的，这里写什么</span></span><br><span class="line">        .....</span><br></pre></td></tr></table></figure>
-<p>然后，中文就正常啦<br><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/zh.jpg"></p>
+<p>然后，中文就正常啦<br><img src="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/zh.jpg"></p>
 
     </article>
     <!-- license -->
@@ -635,10 +635,6 @@
                 <span class="iconfont-archer">&#xe606;</span>
                 Linux
             </span>
-            <span class="sidebar-tag-name" data-tags="嵌入式开发">
-                <span class="iconfont-archer">&#xe606;</span>
-                嵌入式开发
-            </span>
             <span class="sidebar-tag-name" data-tags="MyBatis-Plus">
                 <span class="iconfont-archer">&#xe606;</span>
                 MyBatis-Plus
@@ -650,6 +646,10 @@
             <span class="sidebar-tag-name" data-tags="Hexo">
                 <span class="iconfont-archer">&#xe606;</span>
                 Hexo
+            </span>
+            <span class="sidebar-tag-name" data-tags="嵌入式开发">
+                <span class="iconfont-archer">&#xe606;</span>
+                嵌入式开发
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
