@@ -18,7 +18,7 @@
 <meta property="og:description" content="51单片机想必大家都不陌生，它是最经典的8位单片机之一，广泛应用于各种嵌入式系统中，作者买了各种各样的开发板了，实在是不想再买新的了，于是萌生了设计一款8051模拟器的想法，况且8051的指令一共就有111条，我们完全可以通过软件来实现它的功能,所以作者用 Rust 实现了一个 8051 模拟器，代码也已开源在 GitHub，欢迎大家参阅:mcs51-emulator  为什么用Rust来实现80">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-01-03T03:31:23.000Z">
-<meta property="article:modified_time" content="2026-01-05T02:48:42.856Z">
+<meta property="article:modified_time" content="2026-01-05T03:37:57.203Z">
 <meta property="article:author" content="大西冰城">
 <meta property="article:tag" content="嵌入式开发">
 <meta name="twitter:card" content="summary">
@@ -461,7 +461,7 @@
 <p>循环检测器还需要处理一些边界情况。比如，如何区分程序正常结束（一个<code>sjmp $</code>的自跳转指令）和真正的死循环？如何避免在I&#x2F;O操作密集的循环中错误地触发快进？这些问题都需要在实践中不断调试和完善。我添加了<code>has_io_in_loop</code>和<code>io_operation_count</code>等字段来跟踪循环中的I&#x2F;O操作，还实现了<code>is_deadlock()</code>和<code>is_program_end()</code>等辅助方法来区分不同的循环类型。这个循环检测器的实现让我深刻体会到，软件模拟硬件不仅仅是简单的翻译，更需要针对软件环境的特点做出创造性的优化。</p>
 <h2 id="指令实现"><a href="#指令实现" class="headerlink" title="指令实现"></a>指令实现</h2><p>8051有111条指令，涵盖了数据传输、算术运算、逻辑运算、位操作、跳转和调用等各种操作。我的做法是将指令按功能分类，每类指令放在一个独立的模块中：算术运算、逻辑运算、数据传输、跳转和调用等。</p>
 <p>每个指令的实现都遵循相同的模式：读取操作数、执行操作、更新状态、可选的调试输出。比如在算术模块中，<code>inc_acc</code>函数只做一件事——把累加器加1，使用<code>wrapping_add</code>确保溢出行为与硬件一致。这种简单直接的实现让代码易于理解和测试。</p>
-<p>在实现过程中，我发现有些指令的行为并不像表面上看起来那么简单。比如乘法指令<code>MUL AB</code>，它不仅要计算A×B，还要把16位的结果分别存入A（低8位）和B（高8位）。再比如位操作指令，需要能够访问特定字节的特定位，这要求我实现额外的位寻址逻辑。这些细节都是在阅读数据手册和实际测试中逐步发现和完善的。</p>
+<p>在实现过程中，我发现有些指令的行为并不像表面上看起来那么简单。比如乘法指令<code>MUL AB</code>，它不仅要计算A×B，还要把16位的结果分别存入A（低8位）和B（高8位）。再比如位操作指令，需要能够访问特定字节的特定位，这要求我实现额外的位寻址逻辑。这些细节都是在实际测试中逐步发现和完善的。</p>
 <h2 id="外设模拟"><a href="#外设模拟" class="headerlink" title="外设模拟"></a>外设模拟</h2><p>当CPU核心基本完成后，我开始考虑外设的模拟。8051的外设包括4个8位并行I&#x2F;O端口（P0-P3）、两个16位定时器&#x2F;计数器、一个串口等。但在当前阶段，我只实现了I&#x2F;O端口的基本框架，定时器和串口还在规划中。</p>
 <p>为什么先实现I&#x2F;O端口？因为它们是最基础的外设，几乎所有8051程序都会用到。而且I&#x2F;O端口的实现相对简单，本质上就是读写特殊功能寄存器（SFR）。我为每个端口定义了SFR地址，并实现了<code>read_sfr</code>和<code>write_sfr</code>方法来处理对这些寄存器的访问。</p>
 <p>但即便是看似简单的I&#x2F;O端口，实现起来也有一些微妙之处。比如P0端口是漏极开路输出，需要外部上拉电阻才能输出高电平；P3端口的某些引脚具有第二功能（如串口的RXD和TXD）。这些特性在当前的实现中还没有完全模拟，因为它们涉及到更复杂的硬件行为。我的策略是先把基本功能做好，确保简单的程序能正常运行，然后再逐步增加这些高级特性。</p>
@@ -473,7 +473,7 @@
             <p>Author：<a href="http://steven-feng.com">大西冰城</a>
             <p>Link：<a href="http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</a>
             <p>Publish date：<a href="http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">January 3rd 2026, 11:31:23 am</a>
-            <p>Update date：<a href="http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">January 5th 2026, 10:48:42 am</a>
+            <p>Update date：<a href="http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">January 5th 2026, 11:37:57 am</a>
             <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     <!-- paginator -->
