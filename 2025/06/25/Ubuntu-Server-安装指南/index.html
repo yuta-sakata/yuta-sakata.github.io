@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="大西冰城">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="大西冰城">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="">
+    <meta name="description" content="ubuntu 的server版本是广泛使用的服务器操作系统，适用于各种服务器应用场景。本文将介绍如何安装 Ubuntu Server。 准备工作你需要准备以下内容：  Ubuntu Server：Ubuntu Server下载页面 下载最新的 Ubuntu Server ISO 镜像，推荐使用 LTS版本,这样可以获得更长时间的支持和更新。 ventony:ventony 下载页面 这是一个开源的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu Server 安装指南">
+<meta property="og:url" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ubuntu 的server版本是广泛使用的服务器操作系统，适用于各种服务器应用场景。本文将介绍如何安装 Ubuntu Server。 准备工作你需要准备以下内容：  Ubuntu Server：Ubuntu Server下载页面 下载最新的 Ubuntu Server ISO 镜像，推荐使用 LTS版本,这样可以获得更长时间的支持和更新。 ventony:ventony 下载页面 这是一个开源的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-113403.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-150409.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-152642.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-153001.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-154357.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-154902.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-155038.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-155703.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-160008.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-160813.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-161451.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-161755.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-162240.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-162448.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-162616.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-163114.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-163319.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-163956.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-164346.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-165147.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-165256.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-165421.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-172143.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-170547.png">
+<meta property="og:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-170730.png">
+<meta property="article:published_time" content="2025-06-25T03:32:13.000Z">
+<meta property="article:modified_time" content="2026-01-03T02:19:08.259Z">
+<meta property="article:author" content="大西冰城">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-113403.png">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/logo.png">
+    <title>Ubuntu Server 安装指南 · 大西冰城的博客</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+        <body class="post-body">
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/">大西冰城的博客</a>
+        </span>
+    </div>
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/">大西冰城的博客</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name">Ubuntu Server 安装指南</a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="    height:50vh;
+">
+    <!-- 主页  -->
+    <!-- 404页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+                Ubuntu Server 安装指南
+            <!-- 404 -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            <!-- 404 -->
+        </p>
+        <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+</div>
+
+                <!-- 文章字数统计 -->
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">1.8k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
+                    </div>
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2025/06/25</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>ubuntu 的server版本是广泛使用的服务器操作系统，适用于各种服务器应用场景。本文将介绍如何安装 Ubuntu Server。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>你需要准备以下内容：</p>
+<ol>
+<li><strong>Ubuntu Server</strong>：<a target="_blank" rel="noopener" href="https://cn.ubuntu.com/download/server/step1">Ubuntu Server下载页面</a> 下载最新的 Ubuntu Server ISO 镜像，推荐使用 LTS版本,这样可以获得更长时间的支持和更新。</li>
+<li><strong>ventony</strong>:<a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/download.html">ventony 下载页面</a> 这是一个开源的多启动工具，可以将你的优盘制作成启动盘，支持 ISO 镜像文件的直接引导。</li>
+<li><strong>优盘</strong>：至少 8GB 的容量，建议使用 USB 3.0 优盘以获得更快的读写速度。</li>
+</ol>
+<h2 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>打开ventony的官网，你会看见ventoy提供了三个版本  </p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-113403.png"><br>选择适合你操作系统的版本进行下载，这里演示的是 Windows 版本,所以我们下载的是<code>ventoy-1.1.05-windows.zip</code>,点进去后它又会跳转sourceforge网站,点击<code>Download Latest Version</code>即可下载  </p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-150409.png"><br>下载下来的压缩包解压后进入<code>ventoy-1.1.05-windows</code>目录，双击<code>Ventoy2Disk.exe</code>运行 Ventoy，插入你的优盘，选择你的优盘设备，然后点击<code>安装</code>按钮。注意：这将格式化你的优盘，请确保你已经备份了优盘中的重要数据。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-152642.png"> </p>
+<p>安装好后，你会看见优盘被分区成了两个分区，一个是<code>Ventoy</code>分区，另一个是<code>VTOEFI</code>分区。现在你可以将下载好的 Ubuntu Server ISO 镜像文件复制到<code>Ventoy</code>分区中。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-153001.png"></p>
+<h2 id="进入Ventoy"><a href="#进入Ventoy" class="headerlink" title="进入Ventoy"></a>进入Ventoy</h2><ol>
+<li>将制作好的启动盘插入服务器或电脑，重启进入 BIOS 通常是按 <code>F2</code>、<code>F10</code>、<code>F12</code> 或 <code>Del</code> 键（具体按键取决于你的主板型号），通过键盘方向键选择到<code>Boot</code>选项卡，设置 USB 设备为第一启动项。按F10保存并退出 BIOS 设置。</li>
+</ol>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-154357.png"> </p>
+<ol start="2">
+<li>重启后，你会看到 Ventoy 的启动菜单，选择你复制到优盘中的 Ubuntu Server ISO 镜像文件，然后按回车键进入下一步。</li>
+</ol>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-154902.png">  </p>
+<p>最后还有一步选择启动模式,选择 <code>Boot in normal mode</code> 即可。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-155038.png"></p>
+<p>接下来你会看到 Ubuntu Server 的安装界面，</p>
+<h2 id="安装-Ubuntu-Server"><a href="#安装-Ubuntu-Server" class="headerlink" title="安装 Ubuntu Server"></a>安装 Ubuntu Server</h2><p>接下来你会看到 Ubuntu Server 的安装界面，选择 <code>try or install Ubuntu Server</code> 选项，然后按回车键进入安装界面。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-155703.png"> </p>
+<p>经过一段时间的加载后，你会看到 语言选择界面，我们选择 <code>English</code>，然后按回车键。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-160008.png"></p>
+<p>接下来是键盘布局选择界面,默认的·<code>English (US)</code>即可,这个页面不做任何操作，按回车键继续。</p>
+<p>！<a href="QQ20250625-160213.png"></a></p>
+<p>然后是选择安装类型界面，里面有三个选项：</p>
+<ul>
+<li><strong>Ubuntu Server</strong>：安装 标准的 Ubuntu Server 系统，包含常用的服务器软件包，适用于大多数服务器应用场景。</li>
+<li><strong>Ubuntu Server (Minimal)</strong>：安装最小化的 Ubuntu Server 系统，仅包含基本的软件包，适用于需要自定义安装的软件包的场景。</li>
+<li><strong>Search for third-party software</strong>：安装第三方软件包，例如 NVIDIA 驱动程序、VMware 工具等，适用于需要使用这些软件包的场景。</li>
+</ul>
+<p>我们选择第二个选项 <code>Ubuntu Server (Minimal)</code>，和第三个选项 <code>Search for third-party software</code>，包含最基础的系统和第三方驱动程序即可，按回车键继续。  </p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-160813.png">  </p>
+<p>网络配置界面会自动检测到你的网络设备，回车键继续即可。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-161451.png"></p>
+<p>设置代理地址，如果你没有使用代理服务器，可以直接按回车键跳过此步骤。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-161755.png"></p>
+<p>源选择界面，默认的源地址是 <code>cn.archive.ubuntu.com</code>，如果你在中国大陆，可以改为如下几个源地址之一：</p>
+<ul>
+<li>阿里云：<code>mirrors.aliyun.com/ubuntu</code></li>
+<li>腾讯云：<code>mirrors.cloud.tencent.com/ubuntu</code></li>
+<li>华为云：<code>mirrors.huaweicloud.com/ubuntu</code></li>
+<li>清华大学：<code>mirrors.tuna.tsinghua.edu.cn/ubuntu</code></li>
+</ul>
+<p>这里作者不做任何修改，直接按回车键继续。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-162240.png"> </p>
+<p>接下来是磁盘分区界面，选择 <code>Use an entire disk</code> 选项，按空格键选择你的磁盘设备，然后按回车键选择,请正确选择你的磁盘设备，注意不要选择到其他磁盘设备，否则会导致数据丢失。 </p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-162448.png"> </p>
+<p>下面的Set up this disk as LVM Group选项是可选的，如果你需要使用 LVM（逻辑卷管理）功能，可以选择此选项。LVM 允许你动态调整磁盘分区大小，适用于需要频繁调整磁盘分区的场景。作者这里取消了勾选（也是按空格）,因为这会导致系统盘在其他电脑上无法识别，光标移动到 <code>Done</code> 选项上，按回车键继续。 </p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-162616.png"> </p>
+<p>接下来是确认分区界面，确认无误后，按回车键继续。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-163114.png"></p>
+<p>回车后会弹出个提示框，反正就是警告你将会删除磁盘上的所有数据，点击 <code>Continue</code> 继续</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-163319.png"></p>
+<p>然后就进入到了用户配置界面，有五个选项需要填写：</p>
+<ol>
+<li><strong>Your name</strong>：输入你的名字,这个无关紧要，可以随便输入。</li>
+<li><strong>Your server’s name</strong>：输入你的服务器名称，会作为主机名使用</li>
+<li><strong>Pick a username</strong>：输入你的登录用户名,这个用户名将用于登录系统，全小写</li>
+<li><strong>Choose a password</strong>：输入你的登录密码</li>
+<li><strong>Confirm your password</strong>：再次输入你的登录密码。<br>填写完成后，按回车键继续。</li>
+</ol>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-163956.png"> </p>
+<p>下面一个界面是关于是否启动Ubuntu Pro的提示,Ubuntu Pro是一个商业支持服务，提供额外的安全更新和技术支持。我们白嫖不需要，默认<code>Skip for now</code>即可。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-164346.png"> </p>
+<p>接下来是SSH服务器安装界面，默认是安装的,这样可以通过 SSH 远程访问服务器。如果你不需要远程访问，可以取消勾选。作者这里保留默认选项，光标移动到 <code>Done</code> 选项上，按回车键继续。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-165147.png">  </p>
+<p>下一步可能会出现没找到第三方软件包的提示,这是因为我们在之前的安装类型选择中勾选了 <code>Search for third-party software</code> 选项，但实际上并没有安装任何第三方软件包。你可以忽略这个提示，直接按回车键继续。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-165256.png"></p>
+<p>接下来是一些可选的预安装软件包界面，包括microk8s等常见的云计算和容器化软件。你可以根据需要选择安装这些软件包，作者这里不需要，所以直接移动到 <code>Done</code> 选项上，按回车键继续。<br><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-165421.png"></p>
+<p>接下来是安装过程，系统会开始安装 Ubuntu Server，这个过程可能需要几分钟到十几分钟不等，出现<code>Reboot now</code>选项时，表示安装完成，光标移动到上面按回车键重启系统。</p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-172143.png">  </p>
+<p>然后会提示你移除安装介质，拔掉优盘按回车键继续就好了，这里无图</p>
+<h2 id="登录系统"><a href="#登录系统" class="headerlink" title="登录系统"></a>登录系统</h2><p>重启后，你会看到登录界面，输入你在安装过程中设置的用户名和密码即可登录系统,密码输入时不会显示任何字符，这是正常现象。<br><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-170547.png"></p>
+<p>然后你会看到 Ubuntu Server 的命令行界面，这里是一个最小化的服务器环境，没有图形界面，你可以通过命令行进行各种操作。 </p>
+<p><img src="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/QQ20250625-170730.png"></p>
+
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>Author：<a href="http://steven-feng.com">大西冰城</a>
+            <p>Link：<a href="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/">http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</a>
+            <p>Publish date：<a href="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/">June 25th 2025, 11:32:13 am</a>
+            <p>Update date：<a href="http://steven-feng.com/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/">January 3rd 2026, 10:19:08 am</a>
+            <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2025/06/27/%E6%8A%80%E6%9C%AF%E5%B7%B2%E6%AD%BB/" title="技术已死">
+                    <div class="nextTitle">技术已死</div>
+                </a>
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2025/06/19/Ubuntu%E4%BD%BF%E7%94%A8netplan%E9%85%8D%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/" title="Ubuntu使用netplan配置无线网络">
+                    <div class="prevTitle">Ubuntu使用netplan配置无线网络</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+            
+            
+            
+            <!-- utteranc评论 -->
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+            
+            
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+        <div class="social">
+                            <a href="mailto:steven@joint-cloud.com" class="iconfont-archer email" title="email" ></a>
+                <a href="//github.com/yuta-sakata" class="iconfont-archer github" target="_blank" title="github"></a>
+
+        </div>
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E5%90%AF%E5%8A%A8%E7%9B%98"><span class="toc-number">2.</span> <span class="toc-text">制作启动盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5Ventoy"><span class="toc-number">3.</span> <span class="toc-text">进入Ventoy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Ubuntu-Server"><span class="toc-number">4.</span> <span class="toc-text">安装 Ubuntu Server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.</span> <span class="toc-text">登录系统</span></a></li></ol>
+            </div>
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 11
+        </div>
+        <!-- search  -->
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> 2026 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/03</span>
+            <a class="archive-post-title" href="/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">8051模拟器的设计与实现</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span>
+            <a class="archive-post-title" href="/2025/09/12/Linux%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E6%8E%A2%E7%A7%98%EF%BC%9A%E4%BB%8E%E6%B1%87%E7%BC%96%E5%88%B0C%E8%AF%AD%E8%A8%80%E7%9A%84%E5%AE%8C%E6%95%B4%E8%B0%83%E7%94%A8%E9%93%BE%E8%B7%AF/">Linux内核启动探秘：从汇编到C语言的完整调用链路</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/27</span>
+            <a class="archive-post-title" href="/2025/06/27/%E6%8A%80%E6%9C%AF%E5%B7%B2%E6%AD%BB/">技术已死</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/25</span>
+            <a class="archive-post-title" href="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/">Ubuntu Server 安装指南</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/19</span>
+            <a class="archive-post-title" href="/2025/06/19/Ubuntu%E4%BD%BF%E7%94%A8netplan%E9%85%8D%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/">Ubuntu使用netplan配置无线网络</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span>
+            <a class="archive-post-title" href="/2025/06/16/%E8%87%AA%E5%8A%A8%E5%8C%96-img%E9%95%9C%E5%83%8F%E7%98%A6%E8%BA%AB%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0/">自动化.img镜像瘦身脚本实现</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/29</span>
+            <a class="archive-post-title" href="/2021/10/29/MyBatis-Plus%E5%A6%82%E4%BD%95%E6%AD%A3%E7%BD%AE%E9%85%8D%E7%BD%AE%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">MyBatis-Plus如何正置配置一对多关系数据的分页查询</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/15</span>
+            <a class="archive-post-title" href="/2021/03/15/%E5%88%A9%E7%94%A8HEXO-Gitee-%E7%A0%81%E4%BA%91-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2/">利用HEXO+Gitee(码云)创建一个属于自己的免费博客</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/20</span>
+            <a class="archive-post-title" href="/2020/10/20/SQLServer-%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">SQLServer 安装教程</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">Flutter for Linux 桌面开发笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/14</span>
+            <a class="archive-post-title" href="/2020/10/14/Linux%E8%AE%BE%E7%BD%AENFS%E5%90%91%E5%90%8E%E5%85%BC%E5%AE%B9/">Linux设置NFS向后兼容</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="Linux">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux
+            </span>
+            <span class="sidebar-tag-name" data-tags="MyBatis-Plus">
+                <span class="iconfont-archer">&#xe606;</span>
+                MyBatis-Plus
+            </span>
+            <span class="sidebar-tag-name" data-tags="SQLServer">
+                <span class="iconfont-archer">&#xe606;</span>
+                SQLServer
+            </span>
+            <span class="sidebar-tag-name" data-tags="Hexo">
+                <span class="iconfont-archer">&#xe606;</span>
+                Hexo
+            </span>
+            <span class="sidebar-tag-name" data-tags="嵌入式开发">
+                <span class="iconfont-archer">&#xe606;</span>
+                嵌入式开发
+            </span>
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="Linux运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux运维
+        </span>
+        <span class="sidebar-category-name" data-categories="开发环境摸坑">
+            <span class="iconfont-archer">&#xe60a;</span>
+            开发环境摸坑
+        </span>
+        <span class="sidebar-category-name" data-categories="业余玩法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            业余玩法
+        </span>
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "http://steven-feng.com",
+        root: siteMetaRoot,
+        author: "大西冰城"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+        <!-- main func -->
+        <script src="/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+            <script src="/scripts/share.js" async></script>
+        <!-- mermaid -->
+    </body>
+</html>

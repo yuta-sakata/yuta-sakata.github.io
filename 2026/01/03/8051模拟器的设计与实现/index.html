@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="大西冰城">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="大西冰城">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="">
+    <meta name="description" content="51单片机想必大家都不陌生，它是最经典的8位单片机之一，广泛应用于各种嵌入式系统中，作者买了各种各样的开发板了，实在是不想再买新的了，于是萌生了设计一款8051模拟器的想法，况且8051的指令一共就有111条，我们完全可以通过软件来实现它的功能,所以作者用 Rust 实现了一个 8051 模拟器，代码也已开源在 GitHub，欢迎大家参阅:mcs51-emulator  为什么用Rust来实现80">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8051模拟器的设计与实现">
+<meta property="og:url" content="http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="51单片机想必大家都不陌生，它是最经典的8位单片机之一，广泛应用于各种嵌入式系统中，作者买了各种各样的开发板了，实在是不想再买新的了，于是萌生了设计一款8051模拟器的想法，况且8051的指令一共就有111条，我们完全可以通过软件来实现它的功能,所以作者用 Rust 实现了一个 8051 模拟器，代码也已开源在 GitHub，欢迎大家参阅:mcs51-emulator  为什么用Rust来实现80">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-01-03T03:31:23.000Z">
+<meta property="article:modified_time" content="2026-01-05T02:48:42.856Z">
+<meta property="article:author" content="大西冰城">
+<meta property="article:tag" content="嵌入式开发">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/logo.png">
+    <title>8051模拟器的设计与实现 · 大西冰城的博客</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+        <body class="post-body">
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/">大西冰城的博客</a>
+        </span>
+    </div>
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/">大西冰城的博客</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name">8051模拟器的设计与实现</a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="    height:50vh;
+">
+    <!-- 主页  -->
+    <!-- 404页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+                8051模拟器的设计与实现
+            <!-- 404 -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            <!-- 404 -->
+        </p>
+        <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="嵌入式开发">嵌入式开发</a>
+</div>
+
+                <!-- 文章字数统计 -->
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.7k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
+                    </div>
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2026/01/03</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>51单片机想必大家都不陌生，它是最经典的8位单片机之一，广泛应用于各种嵌入式系统中，作者买了各种各样的开发板了，实在是不想再买新的了，于是萌生了设计一款8051模拟器的想法，况且8051的指令一共就有111条，我们完全可以通过软件来实现它的功能,所以作者用 Rust 实现了一个 8051 模拟器，代码也已开源在 GitHub，欢迎大家参阅:<br><a target="_blank" rel="noopener" href="https://github.com/yuta-sakata/mcs51-emulator">mcs51-emulator</a> </p>
+<h2 id="为什么用Rust来实现8051模拟器"><a href="#为什么用Rust来实现8051模拟器" class="headerlink" title="为什么用Rust来实现8051模拟器"></a>为什么用Rust来实现8051模拟器</h2><p>在此之前，作者曾写过一个”甜品级”解释型编程语言，叫Sparrow（中文名叫灵雀），用的C语言来实现的<a target="_blank" rel="noopener" href="https://github.com/yuta-sakata/sparrow">仓库链接</a>（已经烂尾），在构建过程中遇到了无数次内存泄漏和野指针的问题,即使在AI的加持下，目前解释器内还有不少这样的问题,实在是让人头疼，所以这次决定用Rust来实现8051模拟器，Rust的内存安全特性可以帮助我们避免很多内存管理方面的问题，让我们能够更专注于模拟器的逻辑实现。</p>
+<h2 id="CPU设计思路"><a href="#CPU设计思路" class="headerlink" title="CPU设计思路"></a>CPU设计思路</h2><p>在实现8051模拟器时，最大的挑战是如何准确地建模硬件行为。我首先通过查阅网上资料查阅了8051的相关资料，理解了其核心组件的工作原理，然后开始思考如何在软件中表达这些硬件结构。</p>
+<h3 id="寄存器怎么初始化"><a href="#寄存器怎么初始化" class="headerlink" title="寄存器怎么初始化"></a>寄存器怎么初始化</h3><p>8051的寄存器系统看似简单，但在软件中模拟时需要考虑很多细节。最关键的问题是： <strong>如何初始化这些寄存器？</strong> 真实的硬件上电后，寄存器的值是未定义的，但在模拟器中，我们必须给出一个确定的初始状态。按照惯性思维，最直接的做法就是从0开始：大部分寄存器初始化为0，程序计数器PC从0x0000开始（符合8051的复位向量）。</p>
+<p>堆栈指针<code>SP</code>则设为7，这是8051硬件的标准复位值。通过查阅网上资料查阅得知，这个值是有特殊原因的：<code>Bank 0</code>是8051使用的默认寄存器库，它占用了地址0-7这8个寄存器（R0-R7）。如果<code>SP</code>从0开始，那么在压栈操作时会覆盖这些工作寄存器，导致未定义的行为。因此，<code>SP</code>初始化为7，确保堆栈从地址8开始向上增长，避免与<code>Bank 0</code>的寄存器冲突。通常在实际开发中，启动代码会将SP设置到更高的位置以留出足够的堆栈空间。</p>
+<p>这个方案既保证了可重复性，又不影响正确程序的执行——因为编写良好的程序本来就不应该依赖未定义的初始值。</p>
+<h3 id="内存设计"><a href="#内存设计" class="headerlink" title="内存设计"></a>内存设计</h3><p>8051的内存架构比较特殊，它有256字节的内部RAM、128字节的特殊功能寄存器(SFR)，以及最大64KB的程序存储器。8051采用哈佛架构——程序存储器和数据存储器是完全分离的，你不能用数据指针去读取程序代码，也不能在程序存储器中存放变量。  </p>
+<p>在设计数据结构时，我选择为RAM、SFR和ROM创建独立的存储空间，而不是用单一的大数组。这样做主要是为了结构清晰和代码可维护性，不同的内存区域有不同的访问规则（比如SFR的某些位有特殊含义，ROM是只读的），分离存储可以让代码更易于理解。 </p>
+<p>在实际实现过程中，我还在CPU结构体中添加了一些额外的字段，比如<code>debug</code>标志和<code>delay_skip_counter</code>，这些都是在测试和调试过程中发现需要的。</p>
+<h3 id="延时循环太慢怎么办"><a href="#延时循环太慢怎么办" class="headerlink" title="延时循环太慢怎么办"></a>延时循环太慢怎么办</h3><p>在测试模拟器时，我遇到了一个意料之外的问题。我加载了一个简单的LED闪烁程序，这是8051开发中最经典的”Hello World”。程序逻辑很简单：点亮LED，延时500ms，熄灭LED，再延时500ms，然后循环。但当我运行这个程序时，模拟器似乎卡住了，风扇开始狂转，CPU占用率飙升到100%，而终端里没有任何输出。我以为是代码哪里写错了，导致了死循环，于是加了一些调试输出。结果我发现模拟器确实在正常执行指令，但速度慢得令人发指——500ms的延时竟然让我的电脑跑了好几分钟。</p>
+<p>问题出在哪里？我仔细分析了延时函数的实现。在真实的8051硬件上，假设时钟频率是12MHz，那么500ms内能执行的机器周期数是 (0.5秒 × 12,000,000Hz) ÷ 12 &#x3D; 500,000个机器周期。而一个典型的延时函数包含嵌套循环，每次循环都有变量自增、条件判断、跳转等多条指令，<strong>实际执行的指令总数可能达到数百万条!</strong> 这对于模拟器来说是一个巨大的负担——每条指令都需要解码、执行、更新状态，而这些操作在软件层面的开销比硬件要大得多。</p>
+<p>这让我意识到，如果不做优化，这个模拟器根本无法实际使用。任何包含延时的程序都会让模拟器陷入缓慢的执行循环。但如何优化呢？我不能简单地跳过延时函数，因为我不知道哪些循环是延时，哪些是真正的业务逻辑。我需要一种机制来自动检测忙等待循环，并智能地加速它们的执行。</p>
+<h3 id="循环检测器"><a href="#循环检测器" class="headerlink" title="循环检测器"></a>循环检测器</h3><p>为了解决这个问题，我设计了一个循环检测器（LoopDetector）。它的核心思想是：通过跟踪程序计数器（PC）的历史记录来识别循环模式。在8051的程序中，循环通常表现为后向跳转——PC从一个较大的地址跳回到较小的地址。当检测到这种模式时，我们就开始计数，如果同一个循环执行了足够多次（比如100次），我们就认为这可能是一个忙等待循环，触发”快进”机制——直接增加大量的时钟周期，而不实际执行那么多指令。</p>
+<p>但这个设计也有很多细节需要权衡。首先是阈值的设定：触发快进需要循环多少次？太小的话可能会误判正常的循环，太大的话延时又会很明显。我最终设置为100次，这是经过多次实验得出的一个平衡值。其次是快进的力度：一次快进应该跳过多少个周期？这里我采用了动态调整的策略——如果同一个循环反复触发快进，说明这可能是嵌套的延时循环，我们就加大快进力度，从最初的1000万个周期逐步提升到100亿个周期。</p>
+<p>循环检测器还需要处理一些边界情况。比如，如何区分程序正常结束（一个<code>sjmp $</code>的自跳转指令）和真正的死循环？如何避免在I&#x2F;O操作密集的循环中错误地触发快进？这些问题都需要在实践中不断调试和完善。我添加了<code>has_io_in_loop</code>和<code>io_operation_count</code>等字段来跟踪循环中的I&#x2F;O操作，还实现了<code>is_deadlock()</code>和<code>is_program_end()</code>等辅助方法来区分不同的循环类型。这个循环检测器的实现让我深刻体会到，软件模拟硬件不仅仅是简单的翻译，更需要针对软件环境的特点做出创造性的优化。</p>
+<h2 id="指令实现"><a href="#指令实现" class="headerlink" title="指令实现"></a>指令实现</h2><p>8051有111条指令，涵盖了数据传输、算术运算、逻辑运算、位操作、跳转和调用等各种操作。我的做法是将指令按功能分类，每类指令放在一个独立的模块中：算术运算、逻辑运算、数据传输、跳转和调用等。</p>
+<p>每个指令的实现都遵循相同的模式：读取操作数、执行操作、更新状态、可选的调试输出。比如在算术模块中，<code>inc_acc</code>函数只做一件事——把累加器加1，使用<code>wrapping_add</code>确保溢出行为与硬件一致。这种简单直接的实现让代码易于理解和测试。</p>
+<p>在实现过程中，我发现有些指令的行为并不像表面上看起来那么简单。比如乘法指令<code>MUL AB</code>，它不仅要计算A×B，还要把16位的结果分别存入A（低8位）和B（高8位）。再比如位操作指令，需要能够访问特定字节的特定位，这要求我实现额外的位寻址逻辑。这些细节都是在阅读数据手册和实际测试中逐步发现和完善的。</p>
+<h2 id="外设模拟"><a href="#外设模拟" class="headerlink" title="外设模拟"></a>外设模拟</h2><p>当CPU核心基本完成后，我开始考虑外设的模拟。8051的外设包括4个8位并行I&#x2F;O端口（P0-P3）、两个16位定时器&#x2F;计数器、一个串口等。但在当前阶段，我只实现了I&#x2F;O端口的基本框架，定时器和串口还在规划中。</p>
+<p>为什么先实现I&#x2F;O端口？因为它们是最基础的外设，几乎所有8051程序都会用到。而且I&#x2F;O端口的实现相对简单，本质上就是读写特殊功能寄存器（SFR）。我为每个端口定义了SFR地址，并实现了<code>read_sfr</code>和<code>write_sfr</code>方法来处理对这些寄存器的访问。</p>
+<p>但即便是看似简单的I&#x2F;O端口，实现起来也有一些微妙之处。比如P0端口是漏极开路输出，需要外部上拉电阻才能输出高电平；P3端口的某些引脚具有第二功能（如串口的RXD和TXD）。这些特性在当前的实现中还没有完全模拟，因为它们涉及到更复杂的硬件行为。我的策略是先把基本功能做好，确保简单的程序能正常运行，然后再逐步增加这些高级特性。</p>
+<p>定时器和串口的实现会更复杂，因为它们涉及到时序和中断。定时器需要在每个机器周期自动递增，达到溢出值时产生中断；串口需要模拟波特率、数据位、停止位等通信参数。这些功能我计划在下一阶段实现，目前的重点还是确保CPU核心和基本I&#x2F;O的稳定性。</p>
+
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>Author：<a href="http://steven-feng.com">大西冰城</a>
+            <p>Link：<a href="http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</a>
+            <p>Publish date：<a href="http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">January 3rd 2026, 11:31:23 am</a>
+            <p>Update date：<a href="http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">January 5th 2026, 10:48:42 am</a>
+            <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2025/09/12/Linux%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E6%8E%A2%E7%A7%98%EF%BC%9A%E4%BB%8E%E6%B1%87%E7%BC%96%E5%88%B0C%E8%AF%AD%E8%A8%80%E7%9A%84%E5%AE%8C%E6%95%B4%E8%B0%83%E7%94%A8%E9%93%BE%E8%B7%AF/" title="Linux内核启动探秘：从汇编到C语言的完整调用链路">
+                    <div class="prevTitle">Linux内核启动探秘：从汇编到C语言的完整调用链路</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+            
+            
+            
+            <!-- utteranc评论 -->
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+            
+            
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+        <div class="social">
+                            <a href="mailto:steven@joint-cloud.com" class="iconfont-archer email" title="email" ></a>
+                <a href="//github.com/yuta-sakata" class="iconfont-archer github" target="_blank" title="github"></a>
+
+        </div>
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8Rust%E6%9D%A5%E5%AE%9E%E7%8E%B08051%E6%A8%A1%E6%8B%9F%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">为什么用Rust来实现8051模拟器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">CPU设计思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E6%80%8E%E4%B9%88%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.1.</span> <span class="toc-text">寄存器怎么初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.</span> <span class="toc-text">内存设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%B6%E6%97%B6%E5%BE%AA%E7%8E%AF%E5%A4%AA%E6%85%A2%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="toc-number">2.3.</span> <span class="toc-text">延时循环太慢怎么办</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E6%A3%80%E6%B5%8B%E5%99%A8"><span class="toc-number">2.4.</span> <span class="toc-text">循环检测器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">指令实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E8%AE%BE%E6%A8%A1%E6%8B%9F"><span class="toc-number">4.</span> <span class="toc-text">外设模拟</span></a></li></ol>
+            </div>
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 11
+        </div>
+        <!-- search  -->
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> 2026 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/03</span>
+            <a class="archive-post-title" href="/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">8051模拟器的设计与实现</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span>
+            <a class="archive-post-title" href="/2025/09/12/Linux%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E6%8E%A2%E7%A7%98%EF%BC%9A%E4%BB%8E%E6%B1%87%E7%BC%96%E5%88%B0C%E8%AF%AD%E8%A8%80%E7%9A%84%E5%AE%8C%E6%95%B4%E8%B0%83%E7%94%A8%E9%93%BE%E8%B7%AF/">Linux内核启动探秘：从汇编到C语言的完整调用链路</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/27</span>
+            <a class="archive-post-title" href="/2025/06/27/%E6%8A%80%E6%9C%AF%E5%B7%B2%E6%AD%BB/">技术已死</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/25</span>
+            <a class="archive-post-title" href="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/">Ubuntu Server 安装指南</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/19</span>
+            <a class="archive-post-title" href="/2025/06/19/Ubuntu%E4%BD%BF%E7%94%A8netplan%E9%85%8D%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/">Ubuntu使用netplan配置无线网络</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span>
+            <a class="archive-post-title" href="/2025/06/16/%E8%87%AA%E5%8A%A8%E5%8C%96-img%E9%95%9C%E5%83%8F%E7%98%A6%E8%BA%AB%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0/">自动化.img镜像瘦身脚本实现</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/29</span>
+            <a class="archive-post-title" href="/2021/10/29/MyBatis-Plus%E5%A6%82%E4%BD%95%E6%AD%A3%E7%BD%AE%E9%85%8D%E7%BD%AE%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">MyBatis-Plus如何正置配置一对多关系数据的分页查询</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/15</span>
+            <a class="archive-post-title" href="/2021/03/15/%E5%88%A9%E7%94%A8HEXO-Gitee-%E7%A0%81%E4%BA%91-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2/">利用HEXO+Gitee(码云)创建一个属于自己的免费博客</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/20</span>
+            <a class="archive-post-title" href="/2020/10/20/SQLServer-%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">SQLServer 安装教程</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span>
+            <a class="archive-post-title" href="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">Flutter for Linux 桌面开发笔记</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/14</span>
+            <a class="archive-post-title" href="/2020/10/14/Linux%E8%AE%BE%E7%BD%AENFS%E5%90%91%E5%90%8E%E5%85%BC%E5%AE%B9/">Linux设置NFS向后兼容</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="Linux">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux
+            </span>
+            <span class="sidebar-tag-name" data-tags="MyBatis-Plus">
+                <span class="iconfont-archer">&#xe606;</span>
+                MyBatis-Plus
+            </span>
+            <span class="sidebar-tag-name" data-tags="SQLServer">
+                <span class="iconfont-archer">&#xe606;</span>
+                SQLServer
+            </span>
+            <span class="sidebar-tag-name" data-tags="Hexo">
+                <span class="iconfont-archer">&#xe606;</span>
+                Hexo
+            </span>
+            <span class="sidebar-tag-name" data-tags="嵌入式开发">
+                <span class="iconfont-archer">&#xe606;</span>
+                嵌入式开发
+            </span>
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="Linux运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux运维
+        </span>
+        <span class="sidebar-category-name" data-categories="开发环境摸坑">
+            <span class="iconfont-archer">&#xe60a;</span>
+            开发环境摸坑
+        </span>
+        <span class="sidebar-category-name" data-categories="业余玩法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            业余玩法
+        </span>
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "http://steven-feng.com",
+        root: siteMetaRoot,
+        author: "大西冰城"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+        <!-- main func -->
+        <script src="/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+            <script src="/scripts/share.js" async></script>
+        <!-- mermaid -->
+    </body>
+</html>
