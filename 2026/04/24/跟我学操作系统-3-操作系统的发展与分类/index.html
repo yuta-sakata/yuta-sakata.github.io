@@ -10,28 +10,21 @@
     <meta name="copyright" content="大西冰城">
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     <meta name="description" content="">
-    <meta name="description" content="Flutter是一当前谷歌大力推行的夸平台App开发框架,现已支持Linux! 开启Linux的支持根据我排雷的经验，开发Flutter最好还是在ubuntu 18.4这些新版本里安装，作者16.04，好多软件包太老，需要拖源代码编译新的，老烦了打开终端,运行(这里已经装好了Flutter，不会装看这里)flutter config --enable-linux-desktop这样就开启了Linu">
+    <meta name="description" content="1.手工阶段在计算机发展的最初阶段，并没有“操作系统”这一概念。那时要让计算机执行任务，人们必须先在纸带上手工打孔，打孔的位置代表二进制中的“1”，未打孔的空白处则代表“0”。一段简单的程序，往往需要制成一卷布满密密麻麻小孔的纸带。 纸带制作完成后，需送入专门的纸带机，由纸带机逐孔读取信息、转换为电信号，计算机才能启动并执行程序。整个过程完全依赖人工操作。出了问题也没别的办法，人们只能凭借肉眼，顺">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flutter for Linux 桌面开发笔记">
-<meta property="og:url" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="跟我学操作系统(3):操作系统的发展与分类">
+<meta property="og:url" content="http://steven-feng.com/2026/04/24/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-3-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Flutter是一当前谷歌大力推行的夸平台App开发框架,现已支持Linux! 开启Linux的支持根据我排雷的经验，开发Flutter最好还是在ubuntu 18.4这些新版本里安装，作者16.04，好多软件包太老，需要拖源代码编译新的，老烦了打开终端,运行(这里已经装好了Flutter，不会装看这里)flutter config --enable-linux-desktop这样就开启了Linu">
+<meta property="og:description" content="1.手工阶段在计算机发展的最初阶段，并没有“操作系统”这一概念。那时要让计算机执行任务，人们必须先在纸带上手工打孔，打孔的位置代表二进制中的“1”，未打孔的空白处则代表“0”。一段简单的程序，往往需要制成一卷布满密密麻麻小孔的纸带。 纸带制作完成后，需送入专门的纸带机，由纸带机逐孔读取信息、转换为电信号，计算机才能启动并执行程序。整个过程完全依赖人工操作。出了问题也没别的办法，人们只能凭借肉眼，顺">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/termal.png">
-<meta property="og:image" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/flutter.png">
-<meta property="og:image" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/fonts.png">
-<meta property="og:image" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/ttf.png">
-<meta property="og:image" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/zh.jpg">
-<meta property="article:published_time" content="2020-10-16T02:39:48.000Z">
-<meta property="article:modified_time" content="2026-04-22T03:55:35.637Z">
+<meta property="article:published_time" content="2026-04-24T08:35:21.000Z">
+<meta property="article:modified_time" content="2026-04-24T09:17:37.149Z">
 <meta property="article:author" content="大西冰城">
-<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/termal.png">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/logo.png">
-    <title>Flutter for Linux 桌面开发笔记 · 大西冰城的博客</title>
+    <title>跟我学操作系统(3):操作系统的发展与分类 · 大西冰城的博客</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -249,7 +242,7 @@
             <a href="/">大西冰城的博客</a>
         </div>
         <div class="post-title header-element">
-            <a href="#" class="post-name">Flutter for Linux 桌面开发笔记</a>
+            <a href="#" class="post-name">跟我学操作系统(3):操作系统的发展与分类</a>
         </div>
     </div>
 </header>
@@ -276,7 +269,7 @@
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-                Flutter for Linux 桌面开发笔记
+                跟我学操作系统(3):操作系统的发展与分类
             <!-- 404 -->
         </h1>
         <!-- 副标题 -->
@@ -288,17 +281,16 @@
             <div class="post-intros">
                 <!-- 文章页标签  -->
                     <div class="post-intro-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
 </div>
 
                 <!-- 文章字数统计 -->
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">638</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">4.5k</span>Reading time: <span class="post-count reading-time">15 min</span></span>
                     </div>
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2020/10/16</span>
+                    <span class="post-intro-time">2026/04/24</span>
                     <!-- busuanzi -->
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                             <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
@@ -450,58 +442,155 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p><a target="_blank" rel="noopener" href="https://flutterchina.club/">Flutter</a>是一当前谷歌大力推行的夸平台App开发框架,现已支持Linux!</p>
-<h2 id="开启Linux的支持"><a href="#开启Linux的支持" class="headerlink" title="开启Linux的支持"></a>开启Linux的支持</h2><p>根据我排雷的经验，开发Flutter最好还是在ubuntu 18.4这些新版本里安装，作者16.04，好多软件包太老，需要拖源代码编译新的，老烦了<br>打开终端,运行(这里已经装好了Flutter，<a target="_blank" rel="noopener" href="https://flutterchina.club/setup-linux/">不会装看这里</a>)<br><code>flutter config --enable-linux-desktop</code><br>这样就开启了Linux的支持，最好再运行一下<br><code>flutter doctor</code></p>
-<blockquote>
-<p>linux还要安装以下几个包：</p>
-</blockquote>
-<ul>
-<li>cmake （3.10+）</li>
-<li>libblkid-dev</li>
-<li>ninja-build</li>
-<li>libgtk-3-dev</li>
-</ul>
-<h2 id="创建flutter项目"><a href="#创建flutter项目" class="headerlink" title="创建flutter项目"></a>创建flutter项目</h2><p>打开你要创建的项目路径,运行(<code>myapp</code>是项目名，自己定)<br><code>flutter create myapp</code></p>
-<p>命令行显示如下，一个Demo就创建好了<br><img src="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/termal.png"></p>
-<p>根据提示<code>cd myapp</code>然后<code>flutter run</code>运行这个Demo</p>
-<p><img src="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/flutter.png"></p>
-<p>到这一步，Flutter for Linux桌面开发的一个Demo就完成了</p>
-<h2 id="中文字体缺失问题"><a href="#中文字体缺失问题" class="headerlink" title="中文字体缺失问题"></a>中文字体缺失问题</h2><ul>
-<li>可能已经有老铁注意到了，在开发的过程中，如果用中文，在flutter那会乱码，<a target="_blank" rel="noopener" href="https://github.com/google/flutter-desktop-embedding/issues/730">Issus</a>也被问爆了，得到的回答却是:  <blockquote>
-<p>Please read the Feedback section of the README. This issue is not related to the code in this repository.</p>
-</blockquote>
-</li>
-</ul>
-<p>呵呵，好一个甩锅，然后我以为是编译脚本问题，在脚本那改半天，最后发现，只是缺失中文字体库缺失问题，还真不是官方问题啊……..</p>
-<p>所以，我们只需要在项目跟目录创建一个fonts文件夹<br><img src="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/fonts.png"><br>然后，找一些你喜欢的中文字体，复制到fonts文件夹里(.TTC或者.ttf格式)作者这里从windows下复制了微软雅黑，字体，仅仅演示哈，注意版权问题<br><img src="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/ttf.png"><br>复制好后，打开flutter的配置文件<code>pubspec.yaml</code>,里面有几行被注释的代码</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># example:</span></span><br><span class="line">  <span class="comment"># fonts:</span></span><br><span class="line">  <span class="comment">#   - family: Schyler</span></span><br><span class="line">  <span class="comment">#     fonts:</span></span><br><span class="line">  <span class="comment">#       - asset: fonts/Schyler-Regular.ttf</span></span><br><span class="line">  <span class="comment">#       - asset: fonts/Schyler-Italic.ttf</span></span><br><span class="line">  <span class="comment">#         style: italic</span></span><br><span class="line">  <span class="comment">#   - family: Trajan Pro</span></span><br><span class="line">  <span class="comment">#     fonts:</span></span><br><span class="line">  <span class="comment">#       - asset: fonts/TrajanPro.ttf</span></span><br><span class="line">  <span class="comment">#       - asset: fonts/TrajanPro_Bold.ttf</span></span><br><span class="line">  <span class="comment">#         weight: 700</span></span><br><span class="line">  <span class="comment">#</span></span><br></pre></td></tr></table></figure>
-<p>这里是添加自定字体的配置，然后作者在这里改成了这个样</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">fonts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">family:</span> <span class="string">YaHeiUI</span> <span class="comment">#这里命名自己取，待会用到</span></span><br><span class="line">      <span class="attr">fonts:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">fonts/MSYH.TTC</span> <span class="comment">#一般一个字体都有好几个样式的文件，同一个字体的都这样加上</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">fonts/MSYHBD.TTC</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">fonts/MSYHL.TTC</span></span><br><span class="line">          <span class="attr">weight:</span> <span class="number">700</span></span><br></pre></td></tr></table></figure>
-<p>这样，就添加了自己的字体库了，接着，在代码的 <code>class MyApp extends StatelessWidget</code>加上 &#96;fontFamily: ‘YaHeiUI’使用字体</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApp</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This widget is the root of your application.</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      title: <span class="string">&#x27;Flutter Demo&#x27;</span>,</span><br><span class="line">      theme: ThemeData(</span><br><span class="line">        fontFamily: <span class="string">&#x27;YaHeiUI&#x27;</span>, <span class="comment">//刚刚上面family怎么命名的，这里写什么</span></span><br><span class="line">        .....</span><br></pre></td></tr></table></figure>
-<p>然后，中文就正常啦<br><img src="/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/zh.jpg"></p>
+        <h1 id="1-手工阶段"><a href="#1-手工阶段" class="headerlink" title="1.手工阶段"></a>1.手工阶段</h1><p>在计算机发展的最初阶段，并没有“操作系统”这一概念。那时要让计算机执行任务，人们必须先在纸带上手工打孔，打孔的位置代表二进制中的“1”，未打孔的空白处则代表“0”。一段简单的程序，往往需要制成一卷布满密密麻麻小孔的纸带。</p>
+<p>纸带制作完成后，需送入专门的纸带机，由纸带机逐孔读取信息、转换为电信号，计算机才能启动并执行程序。整个过程完全依赖人工操作。出了问题也没别的办法，人们只能凭借肉眼，顺着纸带的每一个孔逐一检查，不仅耗时费力，效率也低得惊人。</p>
+<pre class="mermaid">flowchart LR
+    A["程序员<br/>手工打孔"] --> B["纸带"]
+    B --> C["纸带机<br/>读孔转信号"]
+    C --> D["计算机<br/>执行程序"]
+    D --> E["输出结果"]
+    E --> F["下一个用户<br/>排队等待"]
+    F --> A</pre>
+<p>要知道，那时候的计算机堪称“天价”，但大量宝贵的运行时间，却浪费在手工准备纸带的环节上。只要纸带没有制作完成，昂贵的机器就只能处于闲置状态，造成极大的资源浪费。而且同一时间计算机只能运行一个程序，多人使用时只能排队等候；纸带一旦打孔出错，没有撤销这一说，只能全部作废、重新打孔。程序越长，打孔的工作量就越大，出错的概率也越高，让人抓狂。</p>
+<h1 id="2-单道批处理系统"><a href="#2-单道批处理系统" class="headerlink" title="2.单道批处理系统"></a>2.单道批处理系统</h1><p>面对手工阶段的低效困境，有人开始思考：能不能让计算机一次准备好几个程序，跑完一个直接切换到下一个，不用等人来换纸带？解决办法是把准备工作从主机上剥离出来——用一台外围机把纸带上的程序读进磁带，存好了再交给主机跑；跑完的结果也先写进磁带，再由外围机负责输出。这就是<strong>脱机输入&#x2F;输出技术</strong>，这样运作的系统叫单道批处理系统。</p>
+<p>负责调度和管输入输出的那段程序叫监督程序，此时这个监督程序就已经具备了操作系统的雏形了。</p>
+<pre class="mermaid">flowchart LR
+    A["程序员<br/>提交纸带"] --> B["外围机<br/>读纸带→写磁带"]
+    B --> C["输入磁带"]
+    C --> D["主机<br/>监督程序调度"]
+    D --> E["执行程序A"]
+    E --> F["执行程序B"]
+    F --> G["执行程序C"]
+    G --> H["输出磁带"]
+    H --> I["外围机<br/>打印输出"]</pre>
+
+<p>单道批处理系统的出现，确实解决了手工阶段的部分效率问题，机器不再需要闲置等待人工更换纸带，资源浪费得到了一定缓解。但它依然存在致命缺点：系统一次只能读取并运行一个程序，当主机在执行当前程序时，其他程序只能在磁带中排队等候，需等前一个程序运行完毕，下一个程序才能被读取并继续执行。更关键的是，在程序运行过程中，CPU有大量时间会处于闲置状态，主要用于等待输入输出操作完成，这就导致CPU的利用率依然处于较低水平，未能充分发挥其核心性能。  </p>
+<h1 id="3-多道批处理系统"><a href="#3-多道批处理系统" class="headerlink" title="3.多道批处理系统"></a>3.多道批处理系统</h1><p>为了克服单道批处理系统CPU利用率低的缺点，多道批处理系统应运而生。与单道批处理系统不同，它每次可以往内存中读入多个程序，当CPU在运行其中一个程序时，其他程序会在内存中待命。一旦当前运行的程序需要进行输入输出操作、CPU陷入等待状态时，系统会立即切换CPU去执行内存中待命的另一个程序。</p>
+<p>这种动态切换的方式，彻底改变了CPU闲置等待的局面，大大提高了CPU的利用率。引入多道程序设计技术后，计算机的各类资源得到了充分利用，CPU等核心资源几乎时刻都有程序在运行，不会再出现长时间闲置的情况，与此同时，系统的吞吐量也大幅提升，单位时间内能够处理的程序数量显著增加。</p>
+<pre class="mermaid">flowchart LR
+    A["程序员<br/>提交作业"] --> B["输入磁带"]
+    B --> C["内存<br/>程序A · 程序B · 程序C<br/>同时装入"]
+
+    subgraph 调度循环["CPU 调度循环"]
+        direction LR
+        D["运行程序A"] -->|"A 等待 I/O<br/>CPU 切换↓"| E["运行程序B"]
+        E -->|"B 等待 I/O<br/>CPU 切换↓"| F["运行程序C"]
+        F -->|"C 等待 I/O<br/>CPU 切换↓"| D
+    end
+
+    C --> D
+    D <-->|"I/O 操作"| G["I/O 设备"]
+    E <-->|"I/O 操作"| G
+    F <-->|"I/O 操作"| G
+    G -->|"I/O 完成<br/>重新就绪"| C
+    F --> H["输出结果"]</pre>
+
+<p>此时的操作系统已经具备了基本的功能，能够管理内存、调度程序、处理输入输出等，但还没有引入用户交互的概念。用户只能通过纸带或者磁带来提交程序，无法直接与计算机进行交互——提交程序后，只能被动等待程序运行完成，既不能在运行过程中进行任何干预，也无法对程序进行调试。因此，这个阶段的操作系统，还不能算是真正意义上的操作系统。</p>
+<h1 id="4-分时操作系统"><a href="#4-分时操作系统" class="headerlink" title="4.分时操作系统"></a>4.分时操作系统</h1><p>为了解决多道批处理系统缺乏用户交互的问题，分时操作系统应运而生。它的核心思路是，计算机<strong>以“时间片”为单位，轮流为多个用户提供服务</strong>。虽然从本质上来说，CPU依然是通过快速切换的方式，为不同用户的程序分配运行时间，但由于切换速度极快，每个用户都能产生“自己在独占计算机资源”的错觉。  </p>
+<p>分时操作系统正式引入了用户交互的概念。用户可以通过终端直接输入命令，操作系统会立即响应并执行这些命令，无需像之前那样通过纸带、磁带提交程序后被动等待。这种即时交互的方式，让用户能够在程序运行过程中进行干预、调试程序，彻底弥补了前几个阶段的不足，也真正意义上实现了操作系统的完整功能。</p>
+<pre class="mermaid">flowchart LR
+    U1["终端用户1<br/>输入命令"] --> OS
+    U2["终端用户2<br/>输入命令"] --> OS
+    U3["终端用户3<br/>输入命令"] --> OS
+
+    subgraph OS["操作系统 · 时间片轮转调度"]
+        direction LR
+        T1["时间片1<br/>服务用户1"] -->|"时间片到期"| T2["时间片2<br/>服务用户2"]
+        T2 -->|"时间片到期"| T3["时间片3<br/>服务用户3"]
+        T3 -->|"时间片到期"| T1
+    end
+
+    OS -->|"立即响应"| U1
+    OS -->|"立即响应"| U2
+    OS -->|"立即响应"| U3</pre>
+
+<p>分时系统的出现标志着操作系统进入了一个新的阶段，用户可以直接与计算机进行交互，操作系统也变得更加复杂和强大，已经是多用户、多任务的系统。但它依然存在一定的局限性：此时的操作系统没有优先级调度机制，所有用户的命令都被平等对待，无法区分不同用户的需求和重要性，这也成为了后续操作系统进一步发展的一个重要方向。</p>
+<h1 id="5-实时操作系统"><a href="#5-实时操作系统" class="headerlink" title="5.实时操作系统"></a>5.实时操作系统</h1><p>实时操作系统是在分时系统的基础上发展起来的，核心改进就是引入了优先级调度机制，恰好弥补了分时系统无法区分任务重要性的不足，能够更好地满足不同用户、不同任务的差异化需求。与分时系统的时间片轮转方式不同，实时操作系统可以优先响应一些特定的事件或任务，这类关键任务无需等到时间片轮转到自己时才执行，而是会被优先调度、即时处理。  </p>
+<p>这种优先级调度机制，确保了关键任务能够及时得到响应和处理，有效避免了关键任务因等待而延误的情况，极大地提高了系统的运行效率和响应速度，让操作系统能够适应对实时性要求更高的场景。</p>
+<pre class="mermaid">flowchart LR
+    E1["外部事件<br/>高优先级中断"] -->|"立即抢占"| CPU
+    E2["外部事件<br/>中优先级中断"] -->|"抢占低优先级"| CPU
+    E3["外部事件<br/>低优先级中断"] -->|"等待高优先级完成"| CPU
+
+    subgraph CPU["CPU · 抢占式优先级调度"]
+        direction LR
+        R1["运行低优先级任务"] -->|"高优先级中断到来<br/>立即打断！"| R2["运行高优先级任务"]
+        R2 -->|"完成，返回"| R1
+    end
+
+    CPU -->|"在截止期限内完成"| D1["高优先级结果<br/>✓ 满足截止期限"]
+    CPU -->|"完成"| D2["低优先级结果<br/>✓ 延后但不丢失"]</pre>
+
+<p>在实时操作系统的控制下，计算机系统接受到外部事件或者任务请求时，必须在严格的时间限制内做出响应，确保关键任务能够及时得到处理，满足实时性的要求。这一特性对于一些对时间敏感的应用场景至关重要，比如工业控制、航空航天、医疗设备等领域——这些领域中，任务的延迟可能会导致严重的安全事故或重大损失，实时操作系统的实时响应能力成为了核心保障。  </p>
+<p>根据实时性要求的严格程度，实时操作系统又可以分为<strong>硬实时系统</strong>和<strong>软实时系统</strong>。硬实时系统对任务完成时间有绝对严格的要求，必须在规定的截止期限内完成任务，一旦超出期限，就视为任务失败，可能会引发严重后果；软实时系统则相对灵活，允许任务完成的时间稍微延后一些，但绝不允许丢失任务，这种设计既保证了基本的实时需求，又提供了更大的灵活性和容错能力，适用于对时间要求相对宽松的场景。  </p>
+<p>到此为止，操作系统已经发展到了一个非常成熟的阶段，能够满足各种不同用户和不同任务的需求。但随着互联网的发展和计算机网络的普及，新的挑战和需求不断涌现，操作系统也并未停止发展的脚步，而是在持续地演进和创新，以适应新的应用环境和多样化的场景需求。</p>
+<h1 id="6-网络操作系统"><a href="#6-网络操作系统" class="headerlink" title="6.网络操作系统"></a>6.网络操作系统</h1><p>随着互联网时代的到来，计算机之间的网络连接变得越来越普遍，此前的操作系统已无法满足多台计算机协同工作的需求，网络操作系统应运而生。它在传统操作系统的基础上，新增了对分布式计算和网络通信的支持，能够允许不同计算机之间共享硬件资源、软件资源和数据信息，实现了更大范围的设备协作和信息交互。  </p>
+<p>这一发展也正式引入了<strong>分布式系统</strong>的概念，此时的操作系统不再仅仅负责管理本地计算机的资源，还需要承担起协调网络上所有计算机的资源分配、处理网络通信、保障数据传输安全等任务，让多台计算机能够高效、有序地协同工作，适应互联网环境下的多样化应用需求。</p>
+<pre class="mermaid">flowchart LR
+    U1["用户A"] --> H1["工作站A<br/>网络操作系统"]
+    U2["用户B"] --> H2["工作站B<br/>网络操作系统"]
+    U3["用户C"] --> H3["工作站C<br/>网络操作系统"]
+
+    H1 <-->|"发送请求 / 接收结果"| NET["计算机网络"]
+    H2 <-->|"发送请求 / 接收结果"| NET
+    H3 <-->|"发送请求 / 接收结果"| NET
+
+    NET <-->|"共享文件访问"| FS["文件服务器"]
+    NET <-->|"远程打印"| PS["打印服务器"]
+    NET <-->|"数据通信"| DB["数据库服务器"]</pre>
+
+<p>网络操作系统的出现使得计算机能够更好地协同工作，用户可以通过网络访问远程资源和服务，计算机不再是一个个孤立的孤岛，而是一个个互联的节点，共同形成了一个庞大的计算机网络。这一变革对于企业、科研机构和个人用户来说都是一个巨大的进步，极大地扩展了计算机的应用范围和功能，让资源共享、远程协作变得更加便捷高效。  </p>
+<p>与此同时，网络操作系统还引入了新的安全机制和管理工具，专门用于保护网络中的各类资源和传输数据的安全，防范网络风险，同时确保网络通信的可靠性和运行效率，为多设备互联、多用户协同提供了坚实的保障。  </p>
+<h1 id="7-分布式操作系统"><a href="#7-分布式操作系统" class="headerlink" title="7.分布式操作系统"></a>7.分布式操作系统</h1><p>分布式操作系统是在网络操作系统的基础上发展起来的，相比网络操作系统，它进一步增强了对分布式计算的支持，能够更高效地协调和管理分布在不同计算机上的各类资源和任务。通过这种高效的协调管理，分布式操作系统实现了更合理的资源利用和更强大的整体计算能力，让多台计算机协同工作的效能得到了极大提升。  </p>
+<pre class="mermaid">flowchart LR
+    U["用户<br/>（感觉像用单台计算机）"] -->|"提交任务"| IF["统一接口层"]
+
+    subgraph NODES["分布式集群（内部协同通信）"]
+        direction LR
+        N1["节点1"] <--> N2["节点2"]
+        N2 <--> N3["节点3"]
+    end
+
+    IF -->|"拆分子任务"| NODES
+    NODES -->|"汇总结果"| IF
+    IF -->|"返回结果"| U</pre>
+
+<p>其核心优势在于，能够让用户像使用单台计算机一样，便捷地使用整个分布式系统。分布式操作系统通过透明化的资源管理和任务调度，隐藏了底层分布式架构的复杂细节，用户无需关心数据存储在哪个节点、任务在哪个计算机上运行，就能轻松享受到分布式计算带来的高效与便捷。这一特性对于大规模数据处理、云计算和高性能计算等对计算能力和资源调度要求极高的领域来说，具有至关重要的意义。  </p>
+<h1 id="8-个人操作系统"><a href="#8-个人操作系统" class="headerlink" title="8. 个人操作系统"></a>8. 个人操作系统</h1><p>随着个人计算机的普及，面向专业场景的操作系统已无法满足普通用户的使用需求，个人操作系统应运而生。它专门为个人用户设计，核心亮点是提供了直观易懂的图形用户界面（GUI），摆脱了此前命令行操作的繁琐，同时支持丰富的应用程序，让计算机变得更加易用、友好，降低了普通用户的使用门槛。<br>个人操作系统的出现，让普通用户也能轻松使用计算机完成各类任务，从办公自动化、文档处理，到娱乐休闲、网络浏览，全方位覆盖了人们的日常数字生活，极大地丰富了人们的生活方式。同时，它还引入了多用户支持功能，可满足家庭、小型办公等多用户共用一台计算机的需求，搭配完善的安全机制，有效保障用户数据的隐私与安全，避免信息泄露。  </p>
+<pre class="mermaid">flowchart TB
+    U["普通用户"] -->|"鼠标 / 键盘操作"| GUI["图形用户界面 GUI"]
+
+    GUI --> APP1["办公软件"]
+    GUI --> APP2["浏览器"]
+    GUI --> APP3["娱乐应用"]
+
+    APP1 & APP2 & APP3 --> OS["个人操作系统内核<br/>（进程管理 · 内存管理 · 文件系统）"]
+
+    OS --> HW1["CPU"]
+    OS --> HW2["内存"]
+    OS --> HW3["存储设备"]</pre>
+
+<p>此外，个人操作系统还提供了丰富的开发工具和开放平台，为软件开发者提供了便捷的开发环境，极大地促进了软件生态系统的繁荣与发展。从本质上来说，个人操作系统的出现，标志着计算机从专业领域的工具，正式转变为大众可及的消费品，极大地推动了信息技术的普及与应用，如今已成为现代社会生产生活中不可或缺的一部分。  </p>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>操作系统的种类和发展远远不止文中所介绍的这些，受本文篇幅所限，无法一一详述。随着科学技术的不断发展和创新，操作系统也始终在持续演进、不断迭代，以适应新的技术环境和多样化的应用场景。比如广泛应用于手机、平板等设备的移动操作系统，支撑云计算发展的云操作系统，以及嵌入到各类智能设备中的嵌入式操作系统等等，每一种操作系统都有其独特的设计理念和核心功能，专门用于满足不同用户、不同应用场景的个性化需求。  </p>
+<p>纵观操作系统的整个发展史，这是一个充满创新与变革的过程，每一个阶段的进步都源于人类对效率提升、使用便利和技术创新的追求，也生动展现了人类在计算机领域不断探索、持续突破的精神，而这种精神也将推动操作系统在未来实现更长远的发展。</p>
 
     </article>
     <!-- license -->
         <div class="license-wrapper">
             <p>Author：<a href="http://steven-feng.com">大西冰城</a>
-            <p>Link：<a href="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/</a>
-            <p>Publish date：<a href="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">October 16th 2020, 10:39:48 am</a>
-            <p>Update date：<a href="http://steven-feng.com/2020/10/16/Flutter-for-Linux-%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">April 22nd 2026, 11:55:35 am</a>
+            <p>Link：<a href="http://steven-feng.com/2026/04/24/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-3-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB/">http://steven-feng.com/2026/04/24/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-3-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB/</a>
+            <p>Publish date：<a href="http://steven-feng.com/2026/04/24/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-3-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB/">April 24th 2026, 4:35:21 pm</a>
+            <p>Update date：<a href="http://steven-feng.com/2026/04/24/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-3-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB/">April 24th 2026, 5:17:37 pm</a>
             <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     <!-- paginator -->
     <ul class="post-paginator">
         <li class="next">
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2020/10/20/SQLServer-%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="SQLServer 安装教程">
-                    <div class="nextTitle">SQLServer 安装教程</div>
-                </a>
         </li>
         <li class="previous">
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2020/10/14/Linux%E8%AE%BE%E7%BD%AENFS%E5%90%91%E5%90%8E%E5%85%BC%E5%AE%B9/" title="Linux设置NFS向后兼容">
-                    <div class="prevTitle">Linux设置NFS向后兼容</div>
+                <a href="/2026/04/24/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9B%9B%E4%B8%AA%E7%89%B9%E5%BE%81/" title="跟我学操作系统(2):操作系统的四个特征">
+                    <div class="prevTitle">跟我学操作系统(2):操作系统的四个特征</div>
                 </a>
         </li>
     </ul>
@@ -553,7 +642,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%90%AFLinux%E7%9A%84%E6%94%AF%E6%8C%81"><span class="toc-number">1.</span> <span class="toc-text">开启Linux的支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAflutter%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.</span> <span class="toc-text">创建flutter项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E5%AD%97%E4%BD%93%E7%BC%BA%E5%A4%B1%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">中文字体缺失问题</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%89%8B%E5%B7%A5%E9%98%B6%E6%AE%B5"><span class="toc-number">1.</span> <span class="toc-text">1.手工阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%8D%95%E9%81%93%E6%89%B9%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.</span> <span class="toc-text">2.单道批处理系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%A4%9A%E9%81%93%E6%89%B9%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">3.多道批处理系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%88%86%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.</span> <span class="toc-text">4.分时操作系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%AE%9E%E6%97%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.</span> <span class="toc-text">5.实时操作系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E7%BD%91%E7%BB%9C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">6.</span> <span class="toc-text">6.网络操作系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E5%88%86%E5%B8%83%E5%BC%8F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.</span> <span class="toc-text">7.分布式操作系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E4%B8%AA%E4%BA%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">8.</span> <span class="toc-text">8. 个人操作系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="toc-number">9.</span> <span class="toc-text">写在最后</span></a></li></ol>
             </div>
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">
