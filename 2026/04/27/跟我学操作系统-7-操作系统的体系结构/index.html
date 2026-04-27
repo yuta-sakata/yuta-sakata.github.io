@@ -10,23 +10,25 @@
     <meta name="copyright" content="大西冰城">
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     <meta name="description" content="">
-    <meta name="description" content="在嵌入式开发过程中，经常遇到从8GB&#x2F;32GB的SD卡导出系统.img镜像文件，然而dd命令导出的镜像文件会把整个SD卡的内容都包含在内，包括未使用的空间,当你想把这个镜像文件烧录到一个更小的SD卡时，就会出现空间不足的问题。为了避免这种情况，我们需要对镜像文件进行瘦身处理，去除未使用的空间。 12345678910111213141516171819202122232425262728">
+    <meta name="description" content="1.操作系统的内核内核是操作系统最核心、最基本的组件，由一系列内核程序构成，例如时钟管理程序、中断处理程序，以及一种被称为原语的特殊程序。原语处于操作系统的最底层，是最贴近硬件的程序，其运行具有 原子性 即执行过程中不会被任何中断打断，必须完整执行完毕后，才能继续运行其他程序，这一特性确保了系统底层操作的稳定性和一致性。除了上述硬件相关的管理功能，内核还负责对进程、存储器、文件系统等关键数据结构进">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自动化.img镜像瘦身脚本实现">
-<meta property="og:url" content="http://steven-feng.com/2025/06/16/%E8%87%AA%E5%8A%A8%E5%8C%96-img%E9%95%9C%E5%83%8F%E7%98%A6%E8%BA%AB%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:title" content="跟我学操作系统(7):操作系统的体系结构">
+<meta property="og:url" content="http://steven-feng.com/2026/04/27/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-7-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在嵌入式开发过程中，经常遇到从8GB&#x2F;32GB的SD卡导出系统.img镜像文件，然而dd命令导出的镜像文件会把整个SD卡的内容都包含在内，包括未使用的空间,当你想把这个镜像文件烧录到一个更小的SD卡时，就会出现空间不足的问题。为了避免这种情况，我们需要对镜像文件进行瘦身处理，去除未使用的空间。 12345678910111213141516171819202122232425262728">
+<meta property="og:description" content="1.操作系统的内核内核是操作系统最核心、最基本的组件，由一系列内核程序构成，例如时钟管理程序、中断处理程序，以及一种被称为原语的特殊程序。原语处于操作系统的最底层，是最贴近硬件的程序，其运行具有 原子性 即执行过程中不会被任何中断打断，必须完整执行完毕后，才能继续运行其他程序，这一特性确保了系统底层操作的稳定性和一致性。除了上述硬件相关的管理功能，内核还负责对进程、存储器、文件系统等关键数据结构进">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-06-16T08:47:30.000Z">
-<meta property="article:modified_time" content="2026-04-22T03:55:35.653Z">
+<meta property="og:image" content="http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/monolithic-kernel.svg">
+<meta property="og:image" content="http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/microkernel.svg">
+<meta property="article:published_time" content="2026-04-27T01:29:32.000Z">
+<meta property="article:modified_time" content="2026-04-27T01:54:22.050Z">
 <meta property="article:author" content="大西冰城">
-<meta property="article:tag" content="嵌入式开发">
-<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://steven-feng.com/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/monolithic-kernel.svg">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/logo.png">
-    <title>自动化.img镜像瘦身脚本实现 · 大西冰城的博客</title>
+    <title>跟我学操作系统(7):操作系统的体系结构 · 大西冰城的博客</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -244,7 +246,7 @@
             <a href="/">大西冰城的博客</a>
         </div>
         <div class="post-title header-element">
-            <a href="#" class="post-name">自动化.img镜像瘦身脚本实现</a>
+            <a href="#" class="post-name">跟我学操作系统(7):操作系统的体系结构</a>
         </div>
     </div>
 </header>
@@ -271,7 +273,7 @@
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-                自动化.img镜像瘦身脚本实现
+                跟我学操作系统(7):操作系统的体系结构
             <!-- 404 -->
         </h1>
         <!-- 副标题 -->
@@ -283,18 +285,17 @@
             <div class="post-intros">
                 <!-- 文章页标签  -->
                     <div class="post-intro-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="嵌入式开发">嵌入式开发</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
 </div>
 
                 <!-- 文章字数统计 -->
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">576</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.7k</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2025/06/16</span>
+                    <span class="post-intro-time">2026/04/27</span>
                     <!-- busuanzi -->
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                             <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
@@ -446,40 +447,39 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p>在嵌入式开发过程中，经常遇到从8GB&#x2F;32GB的SD卡导出系统.img镜像文件，然而dd命令导出的镜像文件会把整个SD卡的内容都包含在内，包括未使用的空间,当你想把这个镜像文件烧录到一个更小的SD卡时，就会出现空间不足的问题。为了避免这种情况，我们需要对镜像文件进行瘦身处理，去除未使用的空间。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 自动剔除镜像未使用空间的脚本</span></span><br><span class="line"></span><br><span class="line">IMAGE=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">&quot;<span class="variable">$IMAGE</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;用法: <span class="variable">$0</span> &lt;镜像文件&gt;&quot;</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取最后分区的结束扇区</span></span><br><span class="line">LAST_SECTOR=$(fdisk -l <span class="string">&quot;<span class="variable">$IMAGE</span>&quot;</span> 2&gt;/dev/null | grep <span class="string">&quot;^<span class="variable">$IMAGE</span>&quot;</span> | <span class="built_in">tail</span> -1 | awk <span class="string">&#x27;&#123;print $3&#125;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">&quot;<span class="variable">$LAST_SECTOR</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;无法获取分区信息&quot;</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算新大小（添加一些缓冲空间）</span></span><br><span class="line">NEW_SIZE=$(( (LAST_SECTOR + <span class="number">2048</span>) * <span class="number">512</span> ))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;原始大小: <span class="subst">$(stat -c%s <span class="string">&quot;<span class="variable">$IMAGE</span>&quot;</span>)</span> 字节&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;新大小: <span class="variable">$NEW_SIZE</span> 字节&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 备份原文件</span></span><br><span class="line"><span class="built_in">cp</span> <span class="string">&quot;<span class="variable">$IMAGE</span>&quot;</span> <span class="string">&quot;<span class="variable">$&#123;IMAGE&#125;</span>.backup&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 截断文件</span></span><br><span class="line"><span class="built_in">truncate</span> -s <span class="variable">$NEW_SIZE</span> <span class="string">&quot;<span class="variable">$IMAGE</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;镜像已精简完成&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;节省空间: <span class="subst">$(( $(stat -c%s <span class="string">&quot;<span class="variable">$&#123;IMAGE&#125;</span>.backup&quot;</span>)</span> - <span class="subst">$(stat -c%s <span class="string">&quot;<span class="variable">$IMAGE</span>&quot;</span>)</span> )) 字节&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这个脚本的工作原理如下：</p>
-<ol>
-<li><strong>获取镜像文件</strong>：脚本接受一个参数，即要处理的镜像文件名。</li>
-<li><strong>获取最后分区的结束扇区</strong>：使用<code>fdisk</code>命令获取镜像文件的分区信息，并提取最后一个分区的结束扇区。</li>
-<li><strong>计算新大小</strong>：根据最后分区的结束扇区计算新的镜像文件大小，并添加一些缓冲空间。</li>
-<li><strong>备份原文件</strong>：在修改之前备份原始镜像文件。</li>
-<li><strong>截断文件</strong>：使用<code>truncate</code>命令将镜像文件截断到新的大小。</li>
-<li><strong>输出结果</strong>：显示原始大小、新大小以及节省的空间。<br>使用这个脚本可以大大简化镜像文件的处理流程，避免手动计算和操作，提高工作效率。只需将脚本保存为<code>shrink_image.sh</code>，然后运行<code>bash shrink_image.sh your_image.img</code>即可自动完成镜像瘦身。确保在执行脚本前备份重要数据，以防止意外数据丢失。</li>
-</ol>
+        <h1 id="1-操作系统的内核"><a href="#1-操作系统的内核" class="headerlink" title="1.操作系统的内核"></a>1.操作系统的内核</h1><p>内核是操作系统最核心、最基本的组件，由一系列内核程序构成，例如时钟管理程序、中断处理程序，以及一种被称为<strong>原语</strong>的特殊程序。原语处于操作系统的最底层，是最贴近硬件的程序，其运行具有 <strong>原子性</strong> 即执行过程中不会被任何中断打断，必须完整执行完毕后，才能继续运行其他程序，这一特性确保了系统底层操作的稳定性和一致性。<br>除了上述硬件相关的管理功能，内核还负责对进程、存储器、文件系统等关键数据结构进行统一的管理与维护。不同操作系统在内核功能的划分上存在差异，由此衍生出两种核心的内核设计架构：<strong>宏内核（Monolithic Kernel）<strong>和</strong>微内核（Microkernel）</strong>。</p>
+<h2 id="1-1-宏内核"><a href="#1-1-宏内核" class="headerlink" title="1.1 宏内核"></a>1.1 宏内核</h2><p>宏内核将大部分系统服务（如文件管理、网络服务等）集中在 kernel 态（内核态）统一实现，功能集成度高；其优点在于性能较高，因为所有系统服务都在内核态中运行，减少了用户态与内核态之间的切换开销；缺点则是内核体积较大，维护和调试较为复杂。</p>
+<h2 id="1-2-微内核"><a href="#1-2-微内核" class="headerlink" title="1.2 微内核"></a>1.2 微内核</h2><p>微内核仅保留最基础的核心功能，包括硬件管理、进程间通信（IPC）等，将文件系统、网络协议、设备驱动等非核心服务迁移至用户态中，降低了内核的复杂度和耦合度；其优点在于模块化设计，易于维护和扩展，且由于将非核心服务移至用户态，系统的稳定性和安全性得到提升；缺点则是性能较低，因为频繁的用户态与内核态切换会带来额外的开销。</p>
+<blockquote>
+<p>现代操作系统的内核设计已不再局限于上述两种纯理论架构，绝大多数都采用了<strong>混合内核（Hybrid Kernel）</strong>。混合内核融合了宏内核和微内核的优势，既保留了宏内核的高性能特点，将核心服务置于内核态以减少切换开销，又借鉴了微内核的模块化思想，将部分非核心服务拆分至用户态，降低内核复杂度。因此，在实际应用中，纯粹意义上的宏内核和微内核已较为少见，混合内核成为了现代操作系统（如Windows、macOS等）的主流选择。</p>
+</blockquote>
+<h1 id="2-操作系统的体系统结构"><a href="#2-操作系统的体系统结构" class="headerlink" title="2.操作系统的体系统结构"></a>2.操作系统的体系统结构</h1><p>操作系统的体系统结构是指操作系统内部各个组件之间的组织和层次关系，主要有 <strong>分层结构</strong>、<strong>模块化结构</strong>、<strong>微内核&#x2F;宏内核结构</strong>、<strong>外核结构</strong>等不同的设计方式。不同的体系统结构在设计理念、实现方式和性能表现上各有特点，适用于不同类型的操作系统和应用场景。</p>
+<h2 id="2-1-分层结构"><a href="#2-1-分层结构" class="headerlink" title="2.1 分层结构"></a>2.1 分层结构</h2><p>分层结构是将操作系统划分为多个层次，最高层是用户层，最低层是硬件层，每一层都提供特定的功能，并且只能调用下一层的服务。这种结构的优点是便于调试和验证、易于维护，因为每一层的功能相对独立；缺点是性能较低，因为每一层之间的调用会带来额外的开销，同时难以合理定义每层的边界——如果相邻两层需要互相调用对方的服务，会导致层次之间的耦合度过高，违背分层结构的设计原则。由于不可跨层调用的限制，系统调用执行时间较长，性能较差，这种设计目前仅为理论上的设计方式，实际应用中较为少见。</p>
+<h2 id="2-2-模块化结构"><a href="#2-2-模块化结构" class="headerlink" title="2.2 模块化结构"></a>2.2 模块化结构</h2><p>模块化结构是将操作系统按功能划分为多个模块，每个模块负责特定的功能，拥有自身的接口和实现，模块之间通过接口进行通信和协作。这种结构的优点是灵活性高：确定好模块之间的接口后，可多模块同时开发；部分模块可设计为可动态加载，无需重启系统即可添加或删除；模块之间的调用无严格限制，可相互调用对方服务。这种设计方式在实际应用中较为常见，例如Linux内核就是采用模块化结构设计的。<br>其缺点是，模块之间的接口定义若不合理，可能导致模块间耦合度过高，增加调试成本。</p>
+<h2 id="2-3-微内核-宏内核结构"><a href="#2-3-微内核-宏内核结构" class="headerlink" title="2.3 微内核&#x2F;宏内核结构"></a>2.3 微内核&#x2F;宏内核结构</h2><p>从体系统结构角度来看，宏内核结构与微内核结构的核心差异在于系统组件的组织方式，结合内核本身的特点，具体说明如下：  </p>
+<p>宏内核结构中，操作系统的所有功能都集中在内核态中实现（采用宏内核的操作系统，通常也会结合上述模块化结构设计），内核负责管理所有系统资源、提供所有系统服务，用户程序通过系统调用来访问内核提供的服务。其优点是性能较高，减少了用户态与内核态的切换开销；缺点是内核体积大，维护和调试复杂，且一个模块的错误可能导致整个系统崩溃。</p>
+<p><img src="/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/monolithic-kernel.svg" alt="宏内核结构"></p>
+<p>微内核结构仅保留最基础的核心功能，内核体积较小，维护和调试更简单；由于非核心服务移至用户态，系统的稳定性和安全性得到提升；缺点是性能较低——用户态下各个模块无法直接调用，需通过内核提供的进程间通信（IPC）机制实现通信，带来额外开销。</p>
+<p><img src="/2026/01/03/8051%E6%A8%A1%E6%8B%9F%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/microkernel.svg" alt="微内核结构"></p>
+<h2 id="外核"><a href="#外核" class="headerlink" title="外核"></a>外核</h2><p>采用外核结构的操作系统非常少见，其设计核心是：内核仅负责提供最基本的功能（如进程调度、进程通信），硬件资源由外核直接管理，<strong>不经过抽象直接向用户程序提供服务</strong>。这种设计可避免内核的复杂性和性能开销，但由于缺乏抽象，系统在兼容性和可移植性方面存在严重问题；同时，内核功能过于简单，用户程序需直接访问硬件资源，会带来安全性和稳定性隐患，因此外核结构的操作系统在实际应用中极为少见。</p>
 
     </article>
     <!-- license -->
         <div class="license-wrapper">
             <p>Author：<a href="http://steven-feng.com">大西冰城</a>
-            <p>Link：<a href="http://steven-feng.com/2025/06/16/%E8%87%AA%E5%8A%A8%E5%8C%96-img%E9%95%9C%E5%83%8F%E7%98%A6%E8%BA%AB%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0/">http://steven-feng.com/2025/06/16/%E8%87%AA%E5%8A%A8%E5%8C%96-img%E9%95%9C%E5%83%8F%E7%98%A6%E8%BA%AB%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0/</a>
-            <p>Publish date：<a href="http://steven-feng.com/2025/06/16/%E8%87%AA%E5%8A%A8%E5%8C%96-img%E9%95%9C%E5%83%8F%E7%98%A6%E8%BA%AB%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0/">June 16th 2025, 4:47:30 pm</a>
-            <p>Update date：<a href="http://steven-feng.com/2025/06/16/%E8%87%AA%E5%8A%A8%E5%8C%96-img%E9%95%9C%E5%83%8F%E7%98%A6%E8%BA%AB%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0/">April 22nd 2026, 11:55:35 am</a>
+            <p>Link：<a href="http://steven-feng.com/2026/04/27/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-7-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">http://steven-feng.com/2026/04/27/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-7-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</a>
+            <p>Publish date：<a href="http://steven-feng.com/2026/04/27/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-7-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">April 27th 2026, 9:29:32 am</a>
+            <p>Update date：<a href="http://steven-feng.com/2026/04/27/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-7-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">April 27th 2026, 9:54:22 am</a>
             <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     <!-- paginator -->
     <ul class="post-paginator">
         <li class="next">
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2025/06/19/Ubuntu%E4%BD%BF%E7%94%A8netplan%E9%85%8D%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/" title="Ubuntu使用netplan配置无线网络">
-                    <div class="nextTitle">Ubuntu使用netplan配置无线网络</div>
-                </a>
         </li>
         <li class="previous">
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2021/10/29/MyBatis-Plus%E5%A6%82%E4%BD%95%E6%AD%A3%E7%BD%AE%E9%85%8D%E7%BD%AE%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/" title="MyBatis-Plus如何正置配置一对多关系数据的分页查询">
-                    <div class="prevTitle">MyBatis-Plus如何正置配置一对多关系数据的分页查询</div>
+                <a href="/2026/04/25/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-6-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" title="跟我学操作系统(6):系统调用">
+                    <div class="prevTitle">跟我学操作系统(6):系统调用</div>
                 </a>
         </li>
     </ul>
@@ -531,7 +531,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%86%85%E6%A0%B8"><span class="toc-number">1.</span> <span class="toc-text">1.操作系统的内核</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%AE%8F%E5%86%85%E6%A0%B8"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 宏内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%BE%AE%E5%86%85%E6%A0%B8"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 微内核</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">2.操作系统的体系统结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 分层结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 模块化结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%BE%AE%E5%86%85%E6%A0%B8-%E5%AE%8F%E5%86%85%E6%A0%B8%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 微内核&#x2F;宏内核结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E6%A0%B8"><span class="toc-number">2.4.</span> <span class="toc-text">外核</span></a></li></ol></li></ol>
             </div>
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">

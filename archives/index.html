@@ -399,6 +399,52 @@
                 <main class="main index-page">
             
         <article class="index-post">
+            <a class="abstract-title" href="/2026/04/27/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-7-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">
+                <span class="abstract-title-text">跟我学操作系统(7):操作系统的体系结构</span>
+            </a>
+            <div class="abstract-content">
+                1.操作系统的内核内核是操作系统最核心、最基本的组件，由一系列内核程序构成，例如时钟管理程序、中断处理程序，以及一种被称为原语的特殊程序。原语处于操作系统的最底层，是最贴近硬件的程序，其运行具有 原子性 即执行过程中不会被任何中断打断，必须完整执行完毕后，才能继续运行其他程序，这一特性确保了系统底层操作的稳定性和一致性。除了上述硬件相关的管理功能，内核还负责对进程、存储器、文件系统等关键数据结构进行统一的管理与维护。不同操作系统在内核功能的划分上存在差异，由此衍生出两种核心的内核设计架构：宏内核（Monolithic Kernel）和微内核（Microkernel）。
+1.1 宏内核宏内...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/04/27">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/04/27</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/04/25/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-6-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">
+                <span class="abstract-title-text">跟我学操作系统(6):系统调用</span>
+            </a>
+            <div class="abstract-content">
+                什么是系统调用之前我们说过，操作系统作为用户与硬件之间的接口，向上提供了一组系统调用（System Call）。用户程序通过这些接口请求内核提供服务。系统调用是用户态程序访问内核功能的标准入口，可以理解为一种特殊的函数调用，与库函数那种在用户空间执行的调用不同，系统调用会触发上一章提到的陷入指令，将执行权切换到内核态，由操作系统内核来处理请求，从而安全地访问和操作系统资源。库函数则是在系统调用的基础上提供了更高层次的封装，方便程序员用各种高级语言编写应用程序。值得注意的是，并非所有库函数都会调用系统调用，有些库函数只需在用户空间执行即可。
+系统调用的过程当一个运行在用户态的程序需要发起系...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/04/25">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/04/25</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
             <a class="abstract-title" href="/2026/04/25/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-5-%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/">
                 <span class="abstract-title-text">跟我学操作系统(5):中断和异常</span>
             </a>
@@ -588,59 +634,6 @@ CPU设计思路在...
             </div>
         </article>
         <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/06/25/Ubuntu-Server-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/">
-                <span class="abstract-title-text">Ubuntu Server 安装指南</span>
-            </a>
-            <div class="abstract-content">
-                ubuntu 的server版本是广泛使用的服务器操作系统，适用于各种服务器应用场景。本文将介绍如何安装 Ubuntu Server。
-准备工作你需要准备以下内容：
-
-Ubuntu Server：Ubuntu Server下载页面 下载最新的 Ubuntu Server ISO 镜像，推荐使用 LTS版本,这样可以获得更长时间的支持和更新。
-ventony:ventony 下载页面 这是一个开源的多启动工具，可以将你的优盘制作成启动盘，支持 ISO 镜像文件的直接引导。
-优盘：至少 8GB 的容量，建议使用 USB 3.0 优盘以获得更快的读写速度。
-
-制作启动盘打开ventony的官网...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2026/04/22">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/06/25</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/2025/06/19/Ubuntu%E4%BD%BF%E7%94%A8netplan%E9%85%8D%E7%BD%AE%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C/">
-                <span class="abstract-title-text">Ubuntu使用netplan配置无线网络</span>
-            </a>
-            <div class="abstract-content">
-                新装了一台Ubuntu 24.04 LTS的服务器，nmtui似乎已经被移除，现在的Ubuntu版本需要使用netplan来配置无线网络,本文记录了配置过程。
-查看无线网卡使用ip addr命令查看无线网卡的名称。  
-12345678910111213jr@dataserver:~$ ip addr1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000    link/loopback 00:00:00:00:00:00 brd 00:00:00:...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2026/04/22">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2025/06/19</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
     <!-- paginator  -->
         <nav class="page-nav">
             <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &gt;</a>
@@ -695,15 +688,25 @@ ventony:ventony 下载页面 这是一个开源的多启动工具，可以将你
         
         
         
+        
+        
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 16
+        Total : 18
         </div>
         <!-- search  -->
     </div>
     <div class="post-archive">
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span>
+            <a class="archive-post-title" href="/2026/04/27/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-7-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">跟我学操作系统(7):操作系统的体系结构</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span>
+            <a class="archive-post-title" href="/2026/04/25/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-6-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">跟我学操作系统(6):系统调用</a>
+        </li>
         <li class="archive-post-item">
             <span class="archive-post-date">04/25</span>
             <a class="archive-post-title" href="/2026/04/25/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-5-%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/">跟我学操作系统(5):中断和异常</a>

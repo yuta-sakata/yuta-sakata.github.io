@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 512" width="520" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#0a0d14"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="520" height="512" fill="url(#bg)" rx="12"/>
+
+  <!-- 标题 -->
+  <text x="260" y="42" text-anchor="middle" font-family="serif" font-size="20" fill="#c8d8f8" letter-spacing="4">微内核结构</text>
+  <line x1="140" y1="54" x2="380" y2="54" stroke="#2a3a5a" stroke-width="0.8"/>
+
+  <!-- 用户空间 -->
+  <rect x="36" y="66" width="448" height="168" rx="7" fill="#101c30" stroke="#2a4a7f" stroke-width="1.2"/>
+  <text x="260" y="86" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4a6890" letter-spacing="2">用户空间</text>
+
+  <!-- 用户程序 -->
+  <rect x="58" y="95" width="100" height="44" rx="5" fill="#0c1828" stroke="#1e3a60" stroke-width="1"/>
+  <text x="108" y="122" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7aaae0">应用程序</text>
+
+  <rect x="172" y="95" width="100" height="44" rx="5" fill="#0c1828" stroke="#1e3a60" stroke-width="1"/>
+  <text x="222" y="122" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7aaae0">系统库</text>
+
+  <rect x="286" y="95" width="100" height="44" rx="5" fill="#0c1828" stroke="#1e3a60" stroke-width="1"/>
+  <text x="336" y="122" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7aaae0">Shell</text>
+
+  <rect x="400" y="95" width="72" height="44" rx="5" fill="#0c1828" stroke="#1e3a60" stroke-width="1"/>
+  <text x="436" y="122" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7aaae0">…</text>
+
+  <!-- 服务进程（用户态运行） -->
+  <text x="260" y="162" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#3a5870" letter-spacing="1">服务进程（运行在用户态）</text>
+
+  <rect x="58" y="172" width="90" height="52" rx="5" fill="#0f1e14" stroke="#1a5030" stroke-width="1"/>
+  <text x="103" y="193" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#50d080">文件服务</text>
+  <text x="103" y="211" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#286040">File Server</text>
+
+  <rect x="158" y="172" width="90" height="52" rx="5" fill="#1e1208" stroke="#7a4010" stroke-width="1"/>
+  <text x="203" y="193" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#f09040">网络服务</text>
+  <text x="203" y="211" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#805020">Net Server</text>
+
+  <rect x="258" y="172" width="90" height="52" rx="5" fill="#081820" stroke="#1a5070" stroke-width="1"/>
+  <text x="303" y="193" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#40b0d8">驱动服务</text>
+  <text x="303" y="211" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#1a6090">Driver Srv</text>
+
+  <rect x="358" y="172" width="90" height="52" rx="5" fill="#1e1608" stroke="#6a4810" stroke-width="1"/>
+  <text x="403" y="193" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#e0a030">安全服务</text>
+  <text x="403" y="211" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#806020">Sec Server</text>
+
+  <!-- 系统调用 / IPC接口 -->
+  <rect x="36" y="242" width="448" height="40" rx="6" fill="#2a1a5e" stroke="#6b3fff" stroke-width="1.4"/>
+  <text x="260" y="268" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#c8b0ff" letter-spacing="3">系统调用 / IPC 接口</text>
+
+  <!-- 微内核（内核空间，极简） -->
+  <rect x="36" y="290" width="448" height="148" rx="7" fill="#160d28" stroke="#5020a0" stroke-width="1.4"/>
+  <text x="260" y="310" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6030a0" letter-spacing="2">内核空间（仅保留最小功能）</text>
+
+  <rect x="58"  y="320" width="130" height="56" rx="5" fill="#0f1e38" stroke="#2a5a9f" stroke-width="1"/>
+  <text x="123" y="345" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#70b0f0">进程调度</text>
+  <text x="123" y="363" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#3a6090">最基本的调度</text>
+
+  <rect x="195" y="320" width="130" height="56" rx="5" fill="#1a0e30" stroke="#5030a0" stroke-width="1"/>
+  <text x="260" y="345" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#b070f0">内存管理</text>
+  <text x="260" y="363" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#6040a0">地址空间隔离</text>
+
+  <rect x="332" y="320" width="130" height="56" rx="5" fill="#1a1a10" stroke="#5a5a10" stroke-width="1"/>
+  <text x="397" y="345" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#d0d050">IPC 通信</text>
+  <text x="397" y="363" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#707020">消息传递机制</text>
+
+  <!-- 硬件抽象层 -->
+  <rect x="58" y="390" width="404" height="34" rx="5" fill="#0a140e" stroke="#1a4828" stroke-width="1"/>
+  <text x="260" y="413" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#30a860" letter-spacing="2">硬件抽象层</text>
+
+  <!-- 硬件层 -->
+  <rect x="36" y="446" width="448" height="46" rx="7" fill="#091410" stroke="#1a5030" stroke-width="1.2"/>
+  <text x="260" y="463" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#206040" letter-spacing="2">硬件层</text>
+  <rect x="58"  y="470" width="72" height="14" rx="3" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="94"  y="481" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#40c070">CPU</text>
+  <rect x="142" y="470" width="72" height="14" rx="3" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="178" y="481" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#40c070">内存</text>
+  <rect x="226" y="470" width="72" height="14" rx="3" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="262" y="481" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#40c070">磁盘</text>
+  <rect x="310" y="470" width="72" height="14" rx="3" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="346" y="481" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#40c070">网卡</text>
+  <rect x="394" y="470" width="72" height="14" rx="3" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="430" y="481" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#40c070">外设</text>
+
+  <text x="260" y="505" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#2a3a50">内核仅保留调度、内存、IPC，其余服务运行在用户态</text>
+</svg>
