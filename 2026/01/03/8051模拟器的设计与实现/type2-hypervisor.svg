@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 460" width="520" height="460">
+
+  <!-- 虚拟机区域 -->
+  <rect x="36" y="8" width="448" height="158" rx="7" fill="#101c30" stroke="#2a4a7f" stroke-width="1.2"/>
+  <text x="260" y="28" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4a6890" letter-spacing="2">虚拟机（运行在用户态）</text>
+
+  <!-- VM1 -->
+  <rect x="52" y="36" width="130" height="118" rx="6" fill="#0a1520" stroke="#1e3a60" stroke-width="1"/>
+  <text x="117" y="54" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4a6890" letter-spacing="1">虚拟机 1</text>
+  <rect x="64" y="62" width="106" height="30" rx="4" fill="#0c1828" stroke="#1e3a60" stroke-width="1"/>
+  <text x="117" y="82" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#7aaae0">应用程序</text>
+  <rect x="64" y="98" width="106" height="30" rx="4" fill="#0f1e38" stroke="#2a5a9f" stroke-width="1"/>
+  <text x="117" y="113" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#70b0f0">客户操作系统</text>
+  <text x="117" y="126" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#3a6090">Guest OS</text>
+
+  <!-- VM2 -->
+  <rect x="195" y="36" width="130" height="118" rx="6" fill="#0a1520" stroke="#1e3a60" stroke-width="1"/>
+  <text x="260" y="54" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4a6890" letter-spacing="1">虚拟机 2</text>
+  <rect x="207" y="62" width="106" height="30" rx="4" fill="#0c1828" stroke="#1e3a60" stroke-width="1"/>
+  <text x="260" y="82" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#7aaae0">应用程序</text>
+  <rect x="207" y="98" width="106" height="30" rx="4" fill="#0f1e38" stroke="#2a5a9f" stroke-width="1"/>
+  <text x="260" y="113" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#70b0f0">客户操作系统</text>
+  <text x="260" y="126" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#3a6090">Guest OS</text>
+
+  <!-- VM3 -->
+  <rect x="338" y="36" width="130" height="118" rx="6" fill="#0a1520" stroke="#1e3a60" stroke-width="1"/>
+  <text x="403" y="54" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4a6890" letter-spacing="1">虚拟机 3</text>
+  <rect x="350" y="62" width="106" height="30" rx="4" fill="#0c1828" stroke="#1e3a60" stroke-width="1"/>
+  <text x="403" y="82" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#7aaae0">应用程序</text>
+  <rect x="350" y="98" width="106" height="30" rx="4" fill="#0f1e38" stroke="#2a5a9f" stroke-width="1"/>
+  <text x="403" y="113" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#70b0f0">客户操作系统</text>
+  <text x="403" y="126" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#3a6090">Guest OS</text>
+
+  <!-- Hypervisor（运行在用户态） -->
+  <rect x="36" y="174" width="448" height="76" rx="7" fill="#160d28" stroke="#5020a0" stroke-width="1.4"/>
+  <text x="260" y="194" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6030a0" letter-spacing="2">虚拟机管理程序（运行在用户态）</text>
+  <rect x="58"  y="204" width="120" height="36" rx="5" fill="#0f1e38" stroke="#2a5a9f" stroke-width="1"/>
+  <text x="118" y="227" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#70b0f0">资源调度</text>
+  <rect x="190" y="204" width="140" height="36" rx="5" fill="#1a0e30" stroke="#5030a0" stroke-width="1"/>
+  <text x="260" y="227" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#b070f0">硬件虚拟化</text>
+  <rect x="342" y="204" width="120" height="36" rx="5" fill="#0a1e14" stroke="#1a6030" stroke-width="1"/>
+  <text x="402" y="227" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#50d080">设备模拟</text>
+
+  <!-- 宿主操作系统 -->
+  <rect x="36" y="258" width="448" height="100" rx="7" fill="#1a1208" stroke="#7a4010" stroke-width="1.4"/>
+  <text x="260" y="278" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#7a4010" letter-spacing="2">宿主操作系统（Host OS）</text>
+
+  <rect x="58"  y="288" width="120" height="36" rx="5" fill="#1e1208" stroke="#7a4010" stroke-width="1"/>
+  <text x="118" y="311" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f09040">进程管理</text>
+
+  <rect x="190" y="288" width="140" height="36" rx="5" fill="#1e1208" stroke="#7a4010" stroke-width="1"/>
+  <text x="260" y="311" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f09040">内存管理</text>
+
+  <rect x="342" y="288" width="120" height="36" rx="5" fill="#1e1208" stroke="#7a4010" stroke-width="1"/>
+  <text x="402" y="311" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#f09040">设备驱动</text>
+
+  <!-- 硬件层 -->
+  <rect x="36" y="366" width="448" height="56" rx="7" fill="#091410" stroke="#1a5030" stroke-width="1.2"/>
+  <text x="260" y="384" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#206040" letter-spacing="2">物理硬件层</text>
+  <rect x="58"  y="392" width="72" height="24" rx="4" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="94"  y="409" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#40c070">CPU</text>
+  <rect x="142" y="392" width="72" height="24" rx="4" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="178" y="409" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#40c070">内存</text>
+  <rect x="226" y="392" width="72" height="24" rx="4" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="262" y="409" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#40c070">磁盘</text>
+  <rect x="310" y="392" width="72" height="24" rx="4" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="346" y="409" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#40c070">网卡</text>
+  <rect x="394" y="392" width="72" height="24" rx="4" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="430" y="409" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#40c070">外设</text>
+</svg>
