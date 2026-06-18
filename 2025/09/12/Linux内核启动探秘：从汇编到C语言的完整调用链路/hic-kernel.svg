@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 510" width="520" height="510">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#0a0d14"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="520" height="510" fill="url(#bg)" rx="12"/>
+
+  <!-- 标题 -->
+  <text x="260" y="42" text-anchor="middle" font-family="serif" font-size="20" fill="#c8d8f8" letter-spacing="4">宏内核结构</text>
+  <line x1="140" y1="54" x2="380" y2="54" stroke="#2a3a5a" stroke-width="0.8"/>
+
+  <!-- 用户空间 -->
+  <rect x="36" y="66" width="448" height="90" rx="7" fill="#101c30" stroke="#2a4a7f" stroke-width="1.2"/>
+  <text x="260" y="86" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4a6890" letter-spacing="2">用户空间</text>
+  <rect x="58"  y="95" width="110" height="44" rx="5" fill="#0c1828" stroke="#1e3a60" stroke-width="1"/>
+  <text x="113" y="122" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7aaae0">应用程序</text>
+  <rect x="205" y="95" width="110" height="44" rx="5" fill="#0c1828" stroke="#1e3a60" stroke-width="1"/>
+  <text x="260" y="122" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7aaae0">系统库</text>
+  <rect x="352" y="95" width="110" height="44" rx="5" fill="#0c1828" stroke="#1e3a60" stroke-width="1"/>
+  <text x="407" y="122" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#7aaae0">Shell</text>
+
+  <!-- 系统调用接口 -->
+  <rect x="36" y="164" width="448" height="40" rx="6" fill="#2a1a5e" stroke="#6b3fff" stroke-width="1.4"/>
+  <text x="260" y="190" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#c8b0ff" letter-spacing="3">系统调用接口</text>
+
+  <!-- 内核空间 -->
+  <rect x="36" y="212" width="448" height="218" rx="7" fill="#160d28" stroke="#5020a0" stroke-width="1.4"/>
+  <text x="260" y="232" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6030a0" letter-spacing="2">内核空间（特权模式）</text>
+
+  <rect x="58"  y="242" width="130" height="66" rx="5" fill="#0f1e38" stroke="#2a5a9f" stroke-width="1"/>
+  <text x="123" y="267" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#70b0f0">进程管理</text>
+  <text x="123" y="287" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#3a6090">调度 · IPC · 信号</text>
+
+  <rect x="195" y="242" width="130" height="66" rx="5" fill="#1a0e30" stroke="#5030a0" stroke-width="1"/>
+  <text x="260" y="267" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#b070f0">内存管理</text>
+  <text x="260" y="287" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6040a0">虚拟内存 · MMU</text>
+
+  <rect x="332" y="242" width="130" height="66" rx="5" fill="#0a1e14" stroke="#1a6030" stroke-width="1"/>
+  <text x="397" y="267" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#50d080">文件系统</text>
+  <text x="397" y="287" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#286040">VFS · 缓存</text>
+
+  <rect x="58"  y="316" width="130" height="66" rx="5" fill="#1e1208" stroke="#7a4010" stroke-width="1"/>
+  <text x="123" y="341" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#f09040">网络子系统</text>
+  <text x="123" y="361" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#805020">TCP/IP · Socket</text>
+
+  <rect x="195" y="316" width="130" height="66" rx="5" fill="#081820" stroke="#1a5070" stroke-width="1"/>
+  <text x="260" y="341" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#40b0d8">设备驱动</text>
+  <text x="260" y="361" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1a6090">字符 · 块 · 网络</text>
+
+  <rect x="332" y="316" width="130" height="66" rx="5" fill="#1e1608" stroke="#6a4810" stroke-width="1"/>
+  <text x="397" y="341" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#e0a030">安全机制</text>
+  <text x="397" y="361" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#806020">权限 · 命名空间</text>
+
+  <!-- 硬件抽象层（紧贴内核空间底部） -->
+  <rect x="58" y="392" width="404" height="34" rx="5" fill="#0a140e" stroke="#1a4828" stroke-width="1"/>
+  <text x="260" y="415" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#30a860" letter-spacing="2">硬件抽象层</text>
+
+  <!-- 硬件层（紧接其后） -->
+  <rect x="36" y="436" width="448" height="56" rx="7" fill="#091410" stroke="#1a5030" stroke-width="1.2"/>
+  <text x="260" y="453" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#206040" letter-spacing="2">硬件层</text>
+  <rect x="58"  y="460" width="72" height="24" rx="4" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="94"  y="477" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#40c070">CPU</text>
+  <rect x="142" y="460" width="72" height="24" rx="4" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="178" y="477" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#40c070">内存</text>
+  <rect x="226" y="460" width="72" height="24" rx="4" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="262" y="477" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#40c070">磁盘</text>
+  <rect x="310" y="460" width="72" height="24" rx="4" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="346" y="477" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#40c070">网卡</text>
+  <rect x="394" y="460" width="72" height="24" rx="4" fill="#061008" stroke="#1a4020" stroke-width="1"/>
+  <text x="430" y="477" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#40c070">外设</text>
+
+  <text x="260" y="503" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#2a3a50">所有内核服务共享同一地址空间</text>
+</svg>
