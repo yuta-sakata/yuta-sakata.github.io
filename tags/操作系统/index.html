@@ -414,13 +414,231 @@
                 </div>
                 <!-- tags -->
                     <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="-操作系统">-操作系统</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/06/17/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-10-%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%A6%82%E5%BF%B5/">
+                <span class="abstract-title-text">跟我学操作系统(10):进程的概念</span>
+            </a>
+            <div class="abstract-content">
+                进程的概念程序是存储在磁盘中的静态文件，本身不具备运行能力。只有当程序被加载至内存、交由CPU执行后，才会转化为可运行的动态实体，这个动态运行的实体就是进程(Process)，简单来说，进程的本质就是程序的一次执行过程。
+进程的标识同一个程序支持多次启动、重复执行，每一次独立的运行都会生成一个全新的进程。为了有序管理系统中并行运行的多个进程，杜绝进程混乱、权限冲突等问题，操作系统会为每个进程分配专属的身份与管理信息，核心标识要素主要分为进程ID、用户ID两类。
+进程ID（Process ID，PID）进程ID是操作系统为每一个进程分配的唯一数字标识符，相当于进程在系统中的专属身份编号。该...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/06/18">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/06/17</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/04/29/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-9-%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+                <span class="abstract-title-text">跟我学操作系统(9):虚拟机</span>
+            </a>
+            <div class="abstract-content">
+                传统计算机传统计算机是指基于物理硬件直接运行操作系统和应用程序的计算机系统。它们依赖CPU、内存、硬盘等物理组件执行计算任务，操作系统直接对这些硬件资源进行管理，为用户提供操作界面和应用程序运行环境。传统计算机的性能与功能受限于物理硬件的能力，因此用户需要定期维护和升级硬件，以满足不断增长的计算需求。此外，一台物理计算机通常只能运行一个操作系统实例，且运行过程中无法同时支持多个操作系统环境。
+虚拟机在商业化环境中，出于安全考虑，企业不希望将所有服务都部署在同一台物理计算机上,这会带来单点故障的风险(一个服务的故障可能导致整个系统瘫痪)；同时，为每个服务单独购置一台物理计算机，又会造成硬件...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/04/29">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/04/29</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/04/28/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-8-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BC%95%E5%AF%BC/">
+                <span class="abstract-title-text">跟我学操作系统(8):操作系统的引导</span>
+            </a>
+            <div class="abstract-content">
+                操作系统的引导当操作系统安装到磁盘后，计算机无法直接启动系统，必须依靠引导程序完成对操作系统的加载并将控制权交给操作系统。引导程序的核心存储位置的是磁盘的主引导记录（MBR），这是磁盘的第一个扇区，固定大小为512字节，内部主要包含两部分关键内容：引导程序和分区表。
+引导程序的核心功能的是将操作系统内核加载到计算机内存中，加载完成后立即将系统控制权交给内核；而分区表则用于记录磁盘上所有分区的关键信息，包括每个分区的起始物理位置、分区大小、分区类型（如系统分区、数据分区）等，为引导程序定位系统分区提供依据。
+MBR对应的磁盘分区中，通常有一个被标记为活动分区的分区，这个分区就是操作系统的安...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/04/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/04/28</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/04/27/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-7-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">
+                <span class="abstract-title-text">跟我学操作系统(7):操作系统的体系结构</span>
+            </a>
+            <div class="abstract-content">
+                1.操作系统的内核内核是操作系统最核心、最基本的组件，由一系列内核程序构成，例如时钟管理程序、中断处理程序，以及一种被称为原语的特殊程序。原语处于操作系统的最底层，是最贴近硬件的程序，其运行具有 原子性 即执行过程中不会被任何中断打断，必须完整执行完毕后，才能继续运行其他程序，这一特性确保了系统底层操作的稳定性和一致性。除了上述硬件相关的管理功能，内核还负责对进程、存储器、文件系统等关键数据结构进行统一的管理与维护。不同操作系统在内核功能的划分上存在差异，由此衍生出两种核心的内核设计架构：宏内核（Monolithic Kernel）和微内核（Microkernel）。
+1.1 宏内核宏内...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/04/27">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/04/27</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/04/25/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-6-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">
+                <span class="abstract-title-text">跟我学操作系统(6):系统调用</span>
+            </a>
+            <div class="abstract-content">
+                什么是系统调用之前我们说过，操作系统作为用户与硬件之间的接口，向上提供了一组系统调用（System Call）。用户程序通过这些接口请求内核提供服务。系统调用是用户态程序访问内核功能的标准入口，可以理解为一种特殊的函数调用，与库函数那种在用户空间执行的调用不同，系统调用会触发上一章提到的陷入指令，将执行权切换到内核态，由操作系统内核来处理请求，从而安全地访问和操作系统资源。库函数则是在系统调用的基础上提供了更高层次的封装，方便程序员用各种高级语言编写应用程序。值得注意的是，并非所有库函数都会调用系统调用，有些库函数只需在用户空间执行即可。
+系统调用的过程当一个运行在用户态的程序需要发起系...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/04/25">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/04/25</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/04/25/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-5-%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/">
+                <span class="abstract-title-text">跟我学操作系统(5):中断和异常</span>
+            </a>
+            <div class="abstract-content">
+                中断的作用CPU上主要运行两种程序：用户程序和内核程序，这一点在上一章已详细讲解，此处不再赘述。而中断的核心作用，就是让操作系统重新夺回CPU的控制权，如果没有中断机制，一旦某个程序获得CPU执行权，就会一直占用CPU资源，操作系统无法介入调度其他程序，整个系统会陷入“卡死”状态，只能执行这一个程序，无法响应任何其他操作。
+如此一来，操作系统的核心特性“并发性”就无从谈起。因此，我们可说没有中断，就没有真正意义上的操作系统。
+中断的类型中断可以根据信号的来源不同分为由CPU内部产生的内部中断和由外部设备产生的外部中断两大类，内部中断常常与当前执行的指令有关，比如上一章提到的用户态下尝试执...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/04/25">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/04/25</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/04/24/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
+                <span class="abstract-title-text">跟我学操作系统(4):操作系统的运行机制</span>
+            </a>
+            <div class="abstract-content">
+                1.内核程序与应用程序要清晰理解内核与应用程序在权限、行为上的核心差异，首先需明确CPU的两种运行模式：用户态和内核态，二者的运行环境和权限截然不同。
+我们日常接触、开发的各类程序，无论是用户安装的软件，还是操作系统自带的工具、服务，都属于应用程序。这类程序均运行在用户态，自身不具备直接操作硬件、管理系统资源的权限，必须依赖操作系统提供的功能支持，才能完成各类任务。比如文件读写、网络通信、内存分配等操作，应用程序无法直接执行，需通过系统调用接口向操作系统发起请求，由操作系统统一处理请求、调度资源，以此保障系统的稳定性和安全性。
+与之相对，有一类程序直接运行在操作系统的核心层面，核心职责是...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/04/24">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/04/24</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/04/24/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-3-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB/">
+                <span class="abstract-title-text">跟我学操作系统(3):操作系统的发展与分类</span>
+            </a>
+            <div class="abstract-content">
+                1.手工阶段在计算机发展的最初阶段，并没有“操作系统”这一概念。那时要让计算机执行任务，人们必须先在纸带上手工打孔，打孔的位置代表二进制中的“1”，未打孔的空白处则代表“0”。一段简单的程序，往往需要制成一卷布满密密麻麻小孔的纸带。
+纸带制作完成后，需送入专门的纸带机，由纸带机逐孔读取信息、转换为电信号，计算机才能启动并执行程序。整个过程完全依赖人工操作。出了问题也没别的办法，人们只能凭借肉眼，顺着纸带的每一个孔逐一检查，不仅耗时费力，效率也低得惊人。
+flowchart LR
+    A["程序员手工打孔"] --> B["纸带"]
+    B --> C["纸带机读孔转信号"]
+  ...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/04/24">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/04/24</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/04/24/%E8%B7%9F%E6%88%91%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9B%9B%E4%B8%AA%E7%89%B9%E5%BE%81/">
+                <span class="abstract-title-text">跟我学操作系统(2):操作系统的四个特征</span>
+            </a>
+            <div class="abstract-content">
+                操作系统具备四个基本特征，分别是并发性、共享性、虚拟性和异步性。在这四个特征中，并发性与共享性是最为核心的两项，二者相互依存、互为前提，共同构成了操作系统高效运行的基础。具体而言，并发性指的是多个进程或线程在逻辑层面能够同时运行，这种并行执行的特性必然会引发多个主体对系统中同一批资源的竞争；反之，若系统中不存在资源的共享机制，多个进程或线程便无法实现真正意义上的并发，并发也就失去了存在的条件。另一方面，若系统始终只有单一进程独占所有资源并执行操作，不存在多个进程的并发需求，那么资源共享的概念便无从谈起，共享也就失去了其实际意义。
+1. 并发性并发性指的是系统能够同时“运行”多个进程，这里...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/04/24">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/04/24</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
 </div>
 
             </div>
         </article>
         <div class="index-post-divider"></div>
     <!-- paginator  -->
+        <nav class="page-nav">
+            <span class="page-number current">1</span><a class="page-number" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/page/2/">2</a><a class="extend next" rel="next" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/page/2/">NEXT &gt;</a>
+        </nav>
 </main>
 
                 <!-- profile -->
@@ -612,10 +830,6 @@
             <span class="sidebar-tag-name" data-tags="操作系统">
                 <span class="iconfont-archer">&#xe606;</span>
                 操作系统
-            </span>
-            <span class="sidebar-tag-name" data-tags="-操作系统">
-                <span class="iconfont-archer">&#xe606;</span>
-                -操作系统
             </span>
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
